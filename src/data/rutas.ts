@@ -87,7 +87,7 @@ export const RUTAS: Ruta[] = [
         slug: 'villa-liliam-catedral-metropolitana',
         color: '#2c5f5d',
         descripcion: 'Ruta C6-006 uniendo Villa Liliam con la Catedral Metropolitana y el Parque de Bolívar. Acceso al centro histórico y comercial desde la zona oriental.',
-        videoUrl: 'https://www.youtube.com/embed/6ZRJ_GYIMYU',
+        videoUrl: 'https://www.youtube.com/watch?v=4C__wOJDz8E',
         mapaUrl: 'https://www.google.com/maps/d/embed?mid=1ha6DpVKadRGoJGO-3u-yhyqzyFvWNQQ&ehbc=2E312F',
         keywords: ['Villa Liliam', 'Catedral Metropolitana', 'Parque Bolívar', 'Centro', 'C6-006', 'Villatina']
     },

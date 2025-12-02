@@ -73,7 +73,7 @@ onMounted(() => {
         <div class="contenido-hero">
 
           <h1 class="titulo-principal">
-            <span class="titulo-linea">Bienvenido al</span>
+            <span class="titulo-linea">Te damos la bienvenida al</span>
             <span class="titulo-linea destacado">Sistema Alimentador</span>
             <span class="titulo-linea destacado">Oriental.</span>
           </h1>
