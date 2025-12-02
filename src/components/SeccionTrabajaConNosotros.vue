@@ -1,5 +1,15 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
+import imgFotosOperadores from '../assets/images/FotosOperadores.webp'
+import imgFotosOperadores2 from '../assets/images/FotosOperadores2.webp'
+import imgFotosOperadores3 from '../assets/images/FotosOperadores3.webp'
+import imgTrabajadores from '../assets/images/Trabajadores.webp'
+import imgTrabajadores2 from '../assets/images/Trabajadores2.webp'
+
+interface ImagenCarousel {
+  src: string
+  position: string
+}
 
 const form = ref({
   nombre: '',
@@ -10,54 +20,84 @@ const form = ref({
   aceptaPolitica: false
 })
 
-const areas = [
-  'Conductores',
-  'Mantenimiento',
-  'Administrativo',
-  'Logística',
-  'Servicio al Cliente'
-]
+const errorArchivo = ref('')
+const MAX_FILE_SIZE = 5 * 1024 * 1024 // 5MB en bytes
 
-const imagenes = [
-  '/images/imagenSAO65.jpg',
-  '/images/imagenSAO62.jpg',
-  '/images/imagenSAO67.JPG',
-  '/images/imagenSAO68.JPG',
-  '/images/imagenSAO69.JPG'
+const imagenes: ImagenCarousel[] = [
+  { src: imgFotosOperadores, position: 'center top' },
+  { src: imgFotosOperadores2, position: 'center top' },
+  { src: imgFotosOperadores3, position: 'center top' },
+  { src: imgTrabajadores, position: 'center top' },
+  { src: imgTrabajadores2, position: 'center top' },
+  { src: '/images/imagenSAO62.webp', position: 'center top' },
+  { src: '/images/imagenSAO65.webp', position: 'center top' },
+  { src: '/images/imagenSAO67.webp', position: 'center top' },
+  { src: '/images/imagenSAO69.webp', position: 'center top' }
 ]
 
 const imagenActual = ref(0)
+const imagenesPreCargadas = ref<Set<number>>(new Set([0])) // Precargar primera imagen
 let intervalo: number | null = null
 
 const siguienteImagen = () => {
-  imagenActual.value = (imagenActual.value + 1) % imagenes.length
+  const nuevaImagen = (imagenActual.value + 1) % imagenes.length
+  imagenesPreCargadas.value.add(nuevaImagen)
+  imagenActual.value = nuevaImagen
 }
 
 const handleFileUpload = (event: Event) => {
   const target = event.target as HTMLInputElement
+  errorArchivo.value = ''
+  
   if (target.files && target.files[0]) {
-    form.value.cv = target.files[0]
+    const file = target.files[0]
+    
+    // Validar tamaño del archivo (máximo 5MB)
+    if (file.size > MAX_FILE_SIZE) {
+      errorArchivo.value = 'El archivo debe ser menor a 5MB'
+      form.value.cv = null
+      target.value = ''
+      return
+    }
+    
+    // Validar tipo de archivo
+    const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']
+    if (!allowedTypes.includes(file.type)) {
+      errorArchivo.value = 'Solo se permiten archivos PDF, DOC o DOCX'
+      form.value.cv = null
+      target.value = ''
+      return
+    }
+    
+    form.value.cv = file
   }
 }
 
 const isFormValid = computed(() => {
   return (
     form.value.nombre.trim() !== '' &&
-
     form.value.email.trim() !== '' &&
-    form.value.area !== '' &&
+    form.value.area.trim() !== '' &&
     form.value.cv !== null &&
-    form.value.aceptaPolitica
+    form.value.aceptaPolitica &&
+    errorArchivo.value === ''
   )
 })
 
-const enviarFormulario = () => {
-  if (!isFormValid.value) return
-  console.log('Formulario enviado:', form.value)
-  alert('¡Gracias por tu interés! Nos pondremos en contacto contigo pronto.')
+// Precargar imágenes de manera progresiva
+const precargarImagenes = () => {
+  imagenes.forEach((imagen, index) => {
+    // Precargar las primeras 3 imágenes inmediatamente
+    if (index < 3) {
+      const img = new Image()
+      img.src = imagen.src
+      imagenesPreCargadas.value.add(index)
+    }
+  })
 }
 
 onMounted(() => {
+  precargarImagenes()
   // Iniciar carousel automático
   intervalo = window.setInterval(siguienteImagen, 4000)
 })
@@ -85,13 +125,14 @@ onBeforeUnmount(() => {
           
           <!-- Columna Izquierda: Formulario -->
           <div class="columna-formulario">
-            <form @submit.prevent="enviarFormulario" class="formulario">
+            <form action="https://usebasin.com/f/1996f9790bcc" method="POST" enctype="multipart/form-data" class="formulario">
               
               <div class="fila-doble">
                 <div class="grupo-input floating-label">
                   <input 
                     type="text" 
                     id="nombre"
+                    name="nombre"
                     v-model="form.nombre" 
                     placeholder=" "
                     class="input-linea"
@@ -103,6 +144,7 @@ onBeforeUnmount(() => {
                   <input 
                     type="email" 
                     id="email"
+                    name="email"
                     v-model="form.email" 
                     placeholder=" "
                     class="input-linea"
@@ -113,25 +155,26 @@ onBeforeUnmount(() => {
               </div>
 
               <div class="fila-doble">
-                <div class="grupo-input">
-                  <label class="label-static">Área de Interés <span class="required">*</span></label>
-                  <div class="select-wrapper">
-                    <select v-model="form.area" class="input-linea" required>
-                      <option value="" disabled selected>Seleccionar...</option>
-                      <option v-for="area in areas" :key="area" :value="area">{{ area }}</option>
-                    </select>
-                    <svg class="icono-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M6 9l6 6 6-6"/>
-                    </svg>
-                  </div>
+                <div class="grupo-input floating-label">
+                  <input 
+                    type="text" 
+                    id="area"
+                    name="area"
+                    v-model="form.area" 
+                    placeholder=" "
+                    class="input-linea"
+                    required
+                  >
+                  <label for="area">Área de Interés <span class="required">*</span></label>
                 </div>
 
                 <div class="grupo-input">
-                  <label class="label-static">Hoja de Vida (PDF) <span class="required">*</span></label>
+                  <label class="label-static">Hoja de Vida (PDF/DOC - Máx 5MB) <span class="required">*</span></label>
                   <div class="file-input-wrapper">
                     <input 
                       type="file" 
                       id="cv" 
+                      name="cv"
                       accept=".pdf,.doc,.docx"
                       @change="handleFileUpload"
                       class="input-file"
@@ -145,12 +188,14 @@ onBeforeUnmount(() => {
                       </svg>
                     </label>
                   </div>
+                  <span v-if="errorArchivo" class="error-mensaje">{{ errorArchivo }}</span>
                 </div>
               </div>
 
               <div class="grupo-input floating-label">
                 <textarea 
                   id="mensaje"
+                  name="mensaje"
                   v-model="form.mensaje" 
                   placeholder=" "
                   rows="1"
@@ -159,10 +204,14 @@ onBeforeUnmount(() => {
                 <label for="mensaje">Cuéntanos sobre ti (Opcional)</label>
               </div>
 
+              <!-- Campo honeypot anti-spam (oculto) -->
+              <input type="hidden" name="_gotcha" style="display:none !important">
+
               <div class="grupo-checkbox">
                 <label class="checkbox-container">
                   <input 
                     type="checkbox" 
+                    name="acepta_politica"
                     v-model="form.aceptaPolitica" 
                     required
                   >
@@ -201,7 +250,14 @@ onBeforeUnmount(() => {
                 v-show="index === imagenActual"
                 class="carousel-imagen"
               >
-                <img :src="imagen" :alt="`Equipo SAO ${index + 1}`" />
+                <img 
+                  :src="imagen.src" 
+                  :alt="`Equipo SAO ${index + 1}`" 
+                  loading="lazy"
+                  decoding="async"
+                  :fetchpriority="index === 0 ? 'high' : 'low'"
+                  :style="{ objectPosition: imagen.position }"
+                />
                 <div class="overlay-gradiente"></div>
               </div>
             </TransitionGroup>
@@ -344,6 +400,14 @@ onBeforeUnmount(() => {
 .required {
   color: #ef4444;
   margin-left: 2px;
+}
+
+.error-mensaje {
+  display: block;
+  color: #ef4444;
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+  font-weight: 500;
 }
 
 .label-static {
@@ -565,6 +629,8 @@ onBeforeUnmount(() => {
   inset: 0;
   width: 100%;
   height: 100%;
+  will-change: transform, opacity;
+  backface-visibility: hidden;
 }
 
 .carousel-imagen img {
@@ -572,6 +638,9 @@ onBeforeUnmount(() => {
   height: 100%;
   object-fit: cover;
   display: block;
+  transform: translateZ(0);
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
 }
 
 .overlay-gradiente {
@@ -584,17 +653,17 @@ onBeforeUnmount(() => {
 /* Transiciones del Carousel */
 .slide-enter-active,
 .slide-leave-active {
-  transition: all 0.8s ease;
+  transition: transform 0.8s ease, opacity 0.8s ease;
 }
 
 .slide-enter-from {
   opacity: 0;
-  transform: translateX(100%);
+  transform: translateX(100%) translateZ(0);
 }
 
 .slide-leave-to {
   opacity: 0;
-  transform: translateX(-100%);
+  transform: translateX(-100%) translateZ(0);
 }
 
 

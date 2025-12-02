@@ -55,7 +55,9 @@
         <div class="columna-quien">
           <h4>Quiénes somos</h4>
           <p>
-            Conectando vidas, impulsando el futuro. Somos el corazón del transporte alimentador en el Valle de Aburrá.
+            Nuestros buses alimentadores no solo llevan personas: impulsan los sueños, metas e historias que construyen ciudad.
+            <br>
+            ¡Medellín Conduce el Cambio!
           </p>
         </div>
 
@@ -63,7 +65,7 @@
         <div class="columna-logo">
           <div class="logo-wrapper">
             <img src="/LOGOSAO6.svg" alt="SAO6 Logo" class="footer-logo" />
-            <h2>Sistema Alimentador Oriental 6</h2>
+            <h2>Sistema Alimentador Oriental</h2>
           </div>
         </div>
 
@@ -101,7 +103,7 @@
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Bree+Serif&display=swap');
 
 .footer {
   background: #4cc253;
@@ -223,7 +225,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 0.1rem;
   transform: scale(1);
   transition: transform 0.3s ease;
   text-align: center;
@@ -240,13 +242,15 @@
 }
 
 .logo-wrapper h2 {
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-family: 'Bree Serif', serif;
+  font-size: 1.65rem;
+  font-weight: 300;
   color: white;
   margin: 0;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   line-height: 1.2;
   white-space: nowrap;
+  letter-spacing: 0.5px;
 }
 
 .columna-redes {

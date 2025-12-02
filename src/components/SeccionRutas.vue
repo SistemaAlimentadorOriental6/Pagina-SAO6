@@ -7,6 +7,7 @@ interface Servicio {
   imagen: string
   botonTexto: string
   rutaNombre: string
+  slug: string // Slug para la URL
 }
 
 const servicios = ref<Servicio[]>([
@@ -15,21 +16,24 @@ const servicios = ref<Servicio[]>([
     descripcion: 'Santa Rita - Estación Acevedo. Conecta con los principales puntos del norte de la ciudad con eficiencia y seguridad.',
     imagen: '/rutas/C6-001.png',
     botonTexto: 'Ver ruta',
-    rutaNombre: 'Santa Rita - Estación Acevedo'
+    rutaNombre: 'Santa Rita - Estación Acevedo',
+    slug: 'santa-rita-estacion-acevedo'
   },
   {
     titulo: 'Ruta C6-002',
     descripcion: 'Versalles - Punto Cero - Hospital. Una ruta directa para tus necesidades médicas y educativas en la zona centro-norte.',
     imagen: '/rutas/C6-002.png',
     botonTexto: 'Ver ruta',
-    rutaNombre: 'Versalles - Punto Cero - Hospital'
+    rutaNombre: 'Versalles - Punto Cero - Hospital',
+    slug: 'versalles-punto-cero-hospital'
   },
   {
     titulo: 'Ruta C6-002A',
     descripcion: 'Versalles - Estación Hospital. Conexión rápida y fluida con el sistema metro y la zona hospitalaria.',
     imagen: '/rutas/C6-002A.png',
     botonTexto: 'Ver ruta',
-    rutaNombre: 'Versalles - Estación Hospital'
+    rutaNombre: 'Versalles - Estación Hospital',
+    slug: 'versalles-estacion-hospital'
   }
 ])
 </script>
@@ -65,15 +69,26 @@ const servicios = ref<Servicio[]>([
             <div class="contenido-wrapper">
               <h3 class="servicio-titulo">{{ servicio.titulo }}</h3>
               <p class="servicio-descripcion">{{ servicio.descripcion }}</p>
-              <button class="boton-servicio">
+              <router-link :to="`/rutas/${servicio.slug}`" class="boton-servicio">
                 {{ servicio.botonTexto }}
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M6 12L10 8L6 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
-              </button>
+              </router-link>
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- Ver todas las rutas -->
+      <div class="ver-todas-container">
+        <router-link to="/rutas" class="boton-ver-todas">
+          Ver todas las rutas
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </router-link>
       </div>
 
     </div>
@@ -268,6 +283,7 @@ const servicios = ref<Servicio[]>([
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+  text-decoration: none;
 }
 
 .boton-servicio svg {
@@ -288,6 +304,45 @@ const servicios = ref<Servicio[]>([
 
 .boton-servicio:active {
   transform: translateY(0);
+}
+
+/* Botón Ver Todas */
+.ver-todas-container {
+  margin-top: 6rem;
+  display: flex;
+  justify-content: center;
+}
+
+.boton-ver-todas {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: white;
+  color: #4cc253;
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+  padding: 1rem 3rem;
+  border: 2px solid #4cc253;
+  border-radius: 50px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(76, 194, 83, 0.15);
+}
+
+.boton-ver-todas:hover {
+  background: #4cc253;
+  color: white;
+  transform: translateY(-4px);
+  box-shadow: 0 15px 30px rgba(76, 194, 83, 0.3);
+  border-color: #4cc253;
+}
+
+.boton-ver-todas svg {
+  transition: transform 0.3s ease;
+}
+
+.boton-ver-todas:hover svg {
+  transform: translateX(5px);
 }
 
 /* Responsive Design */

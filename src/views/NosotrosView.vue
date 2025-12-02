@@ -4,9 +4,9 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { annotate, annotationGroup } from 'rough-notation'
 // @ts-ignore
-import heroBgImage from '../assets/images/runnersao6.JPG'
-import pasajerosImage from '../assets/images/pasajeros-sao6.jpg'
-import runnerImage from '../assets/images/runner-sao6.jpg'
+import heroBgImage from '../assets/images/runnersao6.webp'
+import misionImage from '/images/imagenSAO6.webp'
+import visionImage from '../assets/images/buselectricosao6.webp'
 import compromisoImg from '../assets/images/compromiso.png'
 import honestidadImg from '../assets/images/Honestidad.png'
 import sencillezImg from '../assets/images/Sencillez.png'
@@ -148,7 +148,15 @@ const valores = [
     <!-- Hero Section -->
     <section class="hero-nosotros" aria-label="Sección hero de presentación">
       <div class="hero-bg-wrapper">
-        <img :src="heroBgImage" alt="Equipo SAO6 transportando pasajeros en el oriente de Medellín" class="hero-bg" width="1920" height="1080" />
+        <img 
+          :src="heroBgImage" 
+          alt="Equipo SAO6 transportando pasajeros en el oriente de Medellín" 
+          class="hero-bg" 
+          width="1920" 
+          height="1080" 
+          fetchpriority="high"
+          decoding="async"
+        />
         <div class="hero-overlay"></div>
       </div>
       
@@ -189,26 +197,15 @@ const valores = [
           <!-- Misión -->
           <article class="collage-section mision">
             <div class="collage-images">
-              <div class="img-main-wrapper">
+              <div class="img-single-wrapper">
                 <img 
-                  :data-src="pasajerosImage" 
+                  :src="misionImage" 
                   alt="Pasajeros del sistema alimentador SAO6 abordando buses en el oriente de Medellín" 
-                  class="img-main" 
+                  class="img-single" 
                   width="800" 
                   height="600"
                   loading="lazy"
-                  v-lazy
-                />
-              </div>
-              <div class="img-secondary-wrapper">
-                <img 
-                  :data-src="runnerImage" 
-                  alt="Bus SAO6 en operación sirviendo rutas del Valle de Aburrá" 
-                  class="img-secondary" 
-                  width="500" 
-                  height="400"
-                  loading="lazy"
-                  v-lazy
+                  decoding="async"
                 />
               </div>
             </div>
@@ -231,26 +228,15 @@ const valores = [
               </p>
             </div>
             <div class="collage-images">
-              <div class="img-main-wrapper">
+              <div class="img-single-wrapper">
                 <img 
-                  :data-src="runnerImage" 
+                  :src="visionImage" 
                   alt="Flota moderna de buses eléctricos SAO6 comprometidos con movilidad sostenible" 
-                  class="img-main" 
+                  class="img-single" 
                   width="800" 
                   height="600"
                   loading="lazy"
-                  v-lazy
-                />
-              </div>
-              <div class="img-secondary-wrapper">
-                <img 
-                  :data-src="heroBgImage" 
-                  alt="Equipo profesional de SAO6 trabajando por la movilidad del oriente" 
-                  class="img-secondary" 
-                  width="500" 
-                  height="400"
-                  loading="lazy"
-                  v-lazy
+                  decoding="async"
                 />
               </div>
             </div>
@@ -263,7 +249,6 @@ const valores = [
       <section class="valores seccion-animada" aria-labelledby="titulo-valores">
         <div class="contenedor">
           <div class="encabezado-valores">
-            <span class="subtitulo">ADN Corporativo</span>
             <h2 id="titulo-valores">Nuestros Valores</h2>
           </div>
           
@@ -352,8 +337,10 @@ const valores = [
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center 40%;
-  transform: scale(1.05);
+  object-position: center 90%;
+  transform: scale(1.05) translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .hero-overlay {
@@ -408,11 +395,11 @@ const valores = [
 }
 
 .hero-description {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   line-height: 1.6;
-  color: rgba(255, 255, 255, 0.9);
-  font-weight: 300;
-  max-width: 600px;
+  color: rgba(255, 255, 255, 0.95);
+  font-weight: 400;
+  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -423,11 +410,11 @@ const valores = [
 }
 
 .titulo-editorial {
-  font-size: clamp(2rem, 4vw, 3rem);
+  font-size: clamp(2.5rem, 4vw, 4rem);
   font-weight: 300;
   line-height: 1.3;
   color: #1a1a1a;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   letter-spacing: -0.02em;
 }
 
@@ -437,8 +424,8 @@ const valores = [
 }
 
 .texto-bajada {
-  font-size: 1.2rem;
-  line-height: 1.8;
+  font-size: 1.3rem;
+  line-height: 1.9;
   color: #555;
   margin-bottom: 4rem;
   font-weight: 400;
@@ -511,10 +498,31 @@ const valores = [
   border-radius: 40px 40px 0 40px;
 }
 
+/* Imagen única (sin collage) */
+.img-single-wrapper {
+  width: 100%;
+  height: 100%;
+  border-radius: 32px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+
+.img-single {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
 .img-main {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .img-secondary-wrapper {
@@ -539,6 +547,9 @@ const valores = [
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 .collage-content {
@@ -547,27 +558,28 @@ const valores = [
 
 .section-label {
   display: inline-block;
-  font-size: 0.9rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #4cc253;
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-.collage-content h3 {
-  font-size: 3.5rem;
+.collage-content h2 {
+  font-size: 4rem;
   font-weight: 800;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
   line-height: 1.1;
   color: #1a1a1a;
 }
 
 .collage-content p {
-  font-size: 1.1rem;
-  line-height: 1.8;
+  font-size: 1.3rem;
+  line-height: 1.9;
   color: #555;
   margin-bottom: 2.5rem;
+  font-weight: 400;
 }
 
 .year-badge {

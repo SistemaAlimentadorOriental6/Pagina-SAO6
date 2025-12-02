@@ -91,7 +91,9 @@ onMounted(() => {
 
           <div class="descripcion-contenedor">
             <p class="descripcion">
-              Vive una experiencia de transporte cercana, segura y pensada para lo que te mueve — viaja con confianza por toda Medellín.
+              Movilizamos a las personas de la zona oriental y nororiental de Medellín, de manera cercana, segura y confiable.
+              <br>
+              ¡Medellín Conduce el Cambio!
             </p>
           </div>
 
@@ -252,9 +254,10 @@ onMounted(() => {
 }
 
 .descripcion-contenedor {
-  max-width: 550px;
+  max-width: 650px;
   position: relative;
-  padding-left: 1.5rem;
+  padding-left: 1.75rem;
+  margin-top: 0.75rem;
 }
 
 .descripcion-contenedor::before {
@@ -263,20 +266,26 @@ onMounted(() => {
   left: 0;
   top: 0;
   bottom: 0;
-  width: 3px;
-  background: rgba(255, 255, 255, 0.4);
+  width: 4px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.35));
   border-radius: 2px;
 }
 
 .descripcion {
   font-family: 'Outfit', sans-serif;
-  font-size: 1.0625rem;
-  line-height: 1.7;
-  color: rgba(255, 255, 255, 0.9);
+  font-size: 1.5rem;
+  line-height: 1.35;
+  color: rgba(255, 255, 255, 0.97);
   margin: 0;
-  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
-  font-weight: 400;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.45);
+  font-weight: 500;
   letter-spacing: -0.01em;
+}
+
+.descripcion br {
+  display: block;
+  content: "";
+  margin-top: 0.35rem;
 }
 
 
