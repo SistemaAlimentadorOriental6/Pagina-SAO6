@@ -6,11 +6,13 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "node server.js"
   },
   "dependencies": {
     "@vueuse/head": "^2.0.0",
     "animejs": "^4.2.2",
+    "express": "^4.22.1",
     "gsap": "^3.13.0",
     "plyr": "^3.8.3",
     "rough-notation": "^0.5.1",
