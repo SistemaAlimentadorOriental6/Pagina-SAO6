@@ -166,7 +166,8 @@ const valores = [
           <h1 ref="tituloHero">Quiénes Somos</h1>
           <div class="linea-decorativa"></div>
           <p class="hero-description">
-            Conectando vidas, impulsando el futuro. Somos el corazón del transporte alimentador en el Valle de Aburrá.
+            Nuestros buses alimentadores no solo llevan personas: impulsan los sueños, metas e historias que construyen ciudad.
+            ¡Medellín Conduce el Cambio!
           </p>
         </div>
       </div>

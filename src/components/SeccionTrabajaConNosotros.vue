@@ -3,7 +3,6 @@ import { ref, computed, onMounted, onBeforeUnmount } from 'vue'
 import imgFotosOperadores from '../assets/images/FotosOperadores.webp'
 import imgFotosOperadores2 from '../assets/images/FotosOperadores2.webp'
 import imgFotosOperadores3 from '../assets/images/FotosOperadores3.webp'
-import imgTrabajadores from '../assets/images/Trabajadores.webp'
 import imgTrabajadores2 from '../assets/images/Trabajadores2.webp'
 
 interface ImagenCarousel {
@@ -27,7 +26,6 @@ const imagenes: ImagenCarousel[] = [
   { src: imgFotosOperadores, position: 'center top' },
   { src: imgFotosOperadores2, position: 'center top' },
   { src: imgFotosOperadores3, position: 'center top' },
-  { src: imgTrabajadores, position: 'center top' },
   { src: imgTrabajadores2, position: 'center top' },
   { src: '/images/imagenSAO62.webp', position: 'center top' },
   { src: '/images/imagenSAO65.webp', position: 'center top' },

@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay } from 'swiper/modules'
+import type { Swiper as SwiperType } from 'swiper'
 import 'swiper/css'
 
 interface Rail {
@@ -13,6 +14,9 @@ interface Rail {
 
 // Control del modal
 const mostrarModal = ref(false)
+
+// Referencia al swiper
+const swiperInstance = ref<SwiperType | null>(null)
 
 // Datos base de los socios con acciones
 const baseRails: Rail[] = [
@@ -58,7 +62,29 @@ const rails = ref<Rail[]>([
 
 const modules = [Autoplay]
 
-const manejarClickRail = (rail: Rail) => {
+// Guardar instancia del swiper
+const onSwiper = (swiper: SwiperType) => {
+  swiperInstance.value = swiper
+}
+
+// Pausar el autoplay
+const pausarAutoplay = () => {
+  if (swiperInstance.value?.autoplay) {
+    swiperInstance.value.autoplay.stop()
+  }
+}
+
+// Reanudar el autoplay
+const reanudarAutoplay = () => {
+  if (swiperInstance.value?.autoplay) {
+    swiperInstance.value.autoplay.start()
+  }
+}
+
+const manejarClickRail = (rail: Rail, event: Event) => {
+  event.preventDefault()
+  event.stopPropagation()
+  
   if (rail.tipo === 'enlace' && rail.url) {
     // Abrir enlace en nueva pestaña
     window.open(rail.url, '_blank', 'noopener,noreferrer')
@@ -80,7 +106,11 @@ const cerrarModal = () => {
 <template>
   <section class="seccion-socios">
     <div class="contenedor-socios">
-      <div class="swiper-container-wrapper">
+      <div 
+        class="swiper-container-wrapper"
+        @mouseenter="pausarAutoplay"
+        @mouseleave="reanudarAutoplay"
+      >
         <Swiper
           :modules="modules"
           :slides-per-view="'auto'"
@@ -93,24 +123,28 @@ const cerrarModal = () => {
             pauseOnMouseEnter: false,
             reverseDirection: false
           }"
-          :allowTouchMove="false"
+          :allowTouchMove="true"
           :freeMode="true"
           :freeModeMomentum="false"
           class="rails-swiper"
+          @swiper="onSwiper"
         >
           <SwiperSlide v-for="(rail, index) in rails" :key="`rail-${index}`" class="slide-item">
-            <div 
+            <button 
+              type="button"
               class="rail-contenedor" 
               :class="{ 'clickable': rail.tipo !== 'none' }"
-              @click="manejarClickRail(rail)"
+              @click="manejarClickRail(rail, $event)"
               :title="rail.nombre"
+              :aria-label="rail.nombre"
             >
               <img 
                 :src="rail.imagen" 
                 :alt="rail.nombre"
                 class="rail-imagen"
+                draggable="false"
               />
-            </div>
+            </button>
           </SwiperSlide>
         </Swiper>
         <div class="fade-left"></div>
@@ -130,50 +164,16 @@ const cerrarModal = () => {
 
           <div class="modal-header">
             <div class="iso-badges">
-              <img src="/rails/image 6.svg" alt="ISO 9001" class="iso-badge" />
-              <img src="/rails/image 7.svg" alt="ISO 14001" class="iso-badge" />
+              <img src="/rails/image 6.svg" alt="ISO 9001" class="iso-badge" width="80" height="80" loading="lazy" />
+              <img src="/rails/image 7.svg" alt="ISO 14001" class="iso-badge" width="80" height="80" loading="lazy" />
             </div>
-            <h3 class="modal-titulo">Certificaciones ISO</h3>
+            <h3 class="modal-titulo">Excelencia Certificada</h3>
+            <p class="modal-subtitulo">Comprometidos con la calidad y el medio ambiente</p>
           </div>
 
           <div class="modal-body">
-            <p class="modal-texto">
-              Nuestras certificaciones respaldan algo que para nosotros es esencial: 
-              que cada persona que usa nuestros servicios pueda viajar con tranquilidad, 
-              en vehículos que funcionan bien, conducidos por equipos preparados y protegidos. 
-              Significan que trabajamos todos los días para reducir riesgos en la vía, 
-              respetar a los demás actores viales y operar de manera responsable con el medio ambiente.
-            </p>
-            <p class="modal-texto">
-              No son solo sellos; son la garantía de que hacemos las cosas bien para cuidar 
-              a quienes confían en nosotros y también cuidar el entorno que compartimos.
-            </p>
-
-            <div class="certificaciones-info">
-              <div class="cert-item">
-                <div class="cert-icon">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4cc253" stroke-width="2">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                    <polyline points="22 4 12 14.01 9 11.01"/>
-                  </svg>
-                </div>
-                <div class="cert-texto">
-                  <h4>ISO 9001</h4>
-                  <p>Sistema de Gestión de Calidad</p>
-                </div>
-              </div>
-
-              <div class="cert-item">
-                <div class="cert-icon">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#4cc253" stroke-width="2">
-                    <path d="M3 3h18v18H3zM12 8v8m-4-4h8"/>
-                  </svg>
-                </div>
-                <div class="cert-texto">
-                  <h4>ISO 14001</h4>
-                  <p>Sistema de Gestión Ambiental</p>
-                </div>
-              </div>
+            <div class="modal-mensaje-final">
+              <p>Nuestras certificaciones respaldan algo que para nosotros es esencial: que cada persona que usa nuestros servicios pueda viajar con tranquilidad, en vehículos que funcionan bien, conducidos por equipos preparados y protegidos. Significan que trabajamos todos los días para reducir riesgos en la vía, respetar a los demás actores viales y operar de manera responsable con el medio ambiente. No son solo sellos; son la garantía de que hacemos las cosas bien para cuidar a quienes confían en nosotros y también cuidar el entorno que compartimos.</p>
             </div>
           </div>
 
@@ -224,12 +224,16 @@ const cerrarModal = () => {
 }
 
 .rail-contenedor {
-  width: 120px;
-  height: 70px;
+  width: 140px;
+  height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: transform 0.3s ease;
+  background: transparent;
+  border: none;
+  padding: 0;
+  outline: none;
 }
 
 .rail-contenedor.clickable {
@@ -238,7 +242,7 @@ const cerrarModal = () => {
 
 .rail-imagen {
   max-width: 100%;
-  max-height: 55px;
+  max-height: 65px;
   object-fit: contain;
   filter: grayscale(100%) opacity(0.6);
   transition: all 0.3s ease;
@@ -278,198 +282,200 @@ const cerrarModal = () => {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(4px);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 9999;
   padding: 1rem;
-  overflow-y: auto;
 }
 
 .modal-contenido {
   background: white;
   border-radius: 24px;
-  max-width: 600px;
+  max-width: 700px;
   width: 100%;
   position: relative;
-  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-  animation: modalSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
   font-family: 'Outfit', sans-serif;
-}
-
-@keyframes modalSlideIn {
-  from {
-    opacity: 0;
-    transform: translateY(-20px) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: 90vh;
 }
 
 .btn-cerrar {
   position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  width: 40px;
-  height: 40px;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background: #f5f5f5;
+  background: #f3f4f6;
   border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
-  z-index: 1;
+  z-index: 10;
+  color: #6b7280;
 }
 
 .btn-cerrar:hover {
-  background: #e5e5e5;
+  background: #e5e7eb;
+  color: #111827;
   transform: rotate(90deg);
 }
 
-.btn-cerrar svg {
-  color: #666;
-}
-
 .modal-header {
-  padding: 3rem 2.5rem 2rem;
+  padding: 2.5rem 2rem 1.5rem;
   text-align: center;
-  border-bottom: 1px solid #f0f0f0;
+  background: linear-gradient(to bottom, #f9fafb, white);
 }
 
 .iso-badges {
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
   justify-content: center;
   margin-bottom: 1.5rem;
 }
 
 .iso-badge {
-  height: 80px;
+  height: 70px;
+  width: auto;
   object-fit: contain;
-  filter: grayscale(0);
-  animation: badgeBounce 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05));
+  transition: transform 0.3s ease;
 }
 
-@keyframes badgeBounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-10px);
-  }
+.iso-badge:hover {
+  transform: scale(1.05);
 }
 
 .modal-titulo {
   font-size: 2rem;
   font-weight: 800;
-  color: #1a1a1a;
-  margin: 0;
+  color: #111827;
+  margin: 0 0 0.5rem 0;
   letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.modal-subtitulo {
+  font-size: 1.1rem;
+  color: #6b7280;
+  margin: 0;
+  font-weight: 500;
 }
 
 .modal-body {
-  padding: 2rem 2.5rem;
+  padding: 1.5rem 2.5rem;
+  overflow-y: auto;
 }
 
-.modal-texto {
-  font-size: 1.0625rem;
-  line-height: 1.7;
-  color: #4b5563;
-  margin: 0 0 1.5rem 0;
-}
-
-.modal-texto:last-of-type {
+.certificaciones-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
   margin-bottom: 2rem;
 }
 
-.certificaciones-info {
-  display: grid;
-  gap: 1.5rem;
-  margin-top: 2rem;
-}
-
-.cert-item {
-  display: flex;
-  gap: 1rem;
-  align-items: flex-start;
-  padding: 1.25rem;
-  background: #f9fafb;
-  border-radius: 16px;
+.cert-card {
+  background: #ffffff;
   border: 1px solid #e5e7eb;
-  transition: all 0.3s ease;
+  border-radius: 16px;
+  padding: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  height: 100%;
 }
 
-.cert-item:hover {
-  background: #f0fdf4;
+.cert-card:hover {
   border-color: #4cc253;
-  transform: translateX(4px);
+  box-shadow: 0 10px 30px rgba(76, 194, 83, 0.1);
+  transform: translateY(-4px);
 }
 
-.cert-icon {
-  flex-shrink: 0;
+.cert-icon-wrapper {
   width: 48px;
   height: 48px;
+  border-radius: 12px;
+  background: #f0fdf4;
+  color: #4cc253;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(76, 194, 83, 0.1);
+  margin-bottom: 0.5rem;
 }
 
-.cert-texto h4 {
-  font-size: 1.125rem;
+.cert-content h4 {
+  font-size: 1.25rem;
   font-weight: 700;
-  color: #1a1a1a;
-  margin: 0 0 0.25rem 0;
+  color: #111827;
+  margin: 0 0 0.5rem 0;
 }
 
-.cert-texto p {
-  font-size: 0.9375rem;
-  color: #6b7280;
+.cert-content p {
+  font-size: 0.95rem;
+  color: #4b5563;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.modal-mensaje-final {
+  text-align: center;
+  padding: 1.5rem;
+  background: #f9fafb;
+  border-radius: 12px;
+  color: #374151;
+  font-size: 1rem;
+  line-height: 1.6;
+  font-weight: 600;
+}
+
+.modal-mensaje-final p {
   margin: 0;
 }
 
 .modal-footer {
-  padding: 1.5rem 2.5rem 2.5rem;
+  padding: 1.5rem 2.5rem 2rem;
   display: flex;
   justify-content: center;
+  background: white;
+  border-top: 1px solid #f3f4f6;
 }
 
 .btn-entendido {
-  padding: 0.875rem 2.5rem;
+  padding: 0.875rem 3rem;
   background: #4cc253;
   color: white;
   border: none;
-  border-radius: 12px;
+  border-radius: 50px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all 0.2s ease;
   box-shadow: 0 4px 12px rgba(76, 194, 83, 0.25);
-  font-family: 'Outfit', sans-serif;
 }
 
 .btn-entendido:hover {
   background: #3da542;
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(76, 194, 83, 0.3);
+  box-shadow: 0 8px 20px rgba(76, 194, 83, 0.35);
 }
 
 .btn-entendido:active {
   transform: translateY(0);
 }
 
-/* Transiciones del modal */
+/* Transiciones */
 .modal-enter-active,
 .modal-leave-active {
-  transition: opacity 0.3s ease;
+  transition: opacity 0.2s ease;
 }
 
 .modal-enter-from,
@@ -479,40 +485,23 @@ const cerrarModal = () => {
 
 .modal-enter-active .modal-contenido,
 .modal-leave-active .modal-contenido {
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .modal-enter-from .modal-contenido,
 .modal-leave-to .modal-contenido {
-  transform: translateY(-20px) scale(0.95);
+  transform: scale(0.95) translateY(10px);
+  opacity: 0;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .contenedor-socios {
-    padding: 0 1rem;
-  }
-  
-  .rail-contenedor {
-    width: 100px;
-    height: 60px;
-  }
-  
-  .rail-imagen {
-    max-height: 45px;
-  }
-  
-  .fade-left,
-  .fade-right {
-    width: 80px;
-  }
-
   .modal-contenido {
-    border-radius: 20px;
+    max-height: 85vh;
   }
 
   .modal-header {
-    padding: 2.5rem 1.5rem 1.5rem;
+    padding: 2rem 1.5rem 1rem;
   }
 
   .iso-badges {
@@ -520,80 +509,43 @@ const cerrarModal = () => {
   }
 
   .iso-badge {
-    height: 60px;
+    height: 50px;
   }
 
   .modal-titulo {
     font-size: 1.5rem;
   }
 
+  .certificaciones-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .cert-card {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 1.25rem;
+  }
+
+  .cert-icon-wrapper {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 0;
+    flex-shrink: 0;
+  }
+
+  .cert-icon-wrapper svg {
+    width: 20px;
+    height: 20px;
+  }
+
   .modal-body {
     padding: 1.5rem;
   }
 
-  .modal-texto {
-    font-size: 1rem;
-  }
-
-  .certificaciones-info {
-    gap: 1rem;
-  }
-
-  .cert-item {
+  .modal-mensaje-final {
     padding: 1rem;
-  }
-
-  .cert-icon {
-    width: 40px;
-    height: 40px;
-  }
-
-  .cert-icon svg {
-    width: 24px;
-    height: 24px;
-  }
-
-  .cert-texto h4 {
-    font-size: 1rem;
-  }
-
-  .cert-texto p {
-    font-size: 0.875rem;
-  }
-
-  .modal-footer {
-    padding: 1rem 1.5rem 2rem;
-  }
-
-  .btn-entendido {
-    width: 100%;
-    padding: 1rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .modal-overlay {
-    padding: 0.5rem;
-  }
-
-  .modal-header {
-    padding: 2rem 1.25rem 1.25rem;
-  }
-
-  .iso-badge {
-    height: 50px;
-  }
-
-  .modal-titulo {
-    font-size: 1.375rem;
-  }
-
-  .modal-body {
-    padding: 1.25rem;
-  }
-
-  .modal-texto {
-    font-size: 0.9375rem;
+    font-size: 0.8rem;
   }
 }
 </style>

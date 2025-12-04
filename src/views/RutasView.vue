@@ -160,26 +160,31 @@ onMounted(async () => {
 
         <!-- Grid de Rutas -->
         <div class="grid-rutas" v-if="rutasFiltradas.length > 0">
-          <div v-for="(ruta, index) in rutasFiltradas" :key="index" class="card-ruta">
-            <div class="ruta-badge">Ruta</div>
-            <div class="card-content">
+          <router-link 
+            v-for="(ruta, index) in rutasFiltradas" 
+            :key="index" 
+            :to="`/rutas/${ruta.slug}`"
+            class="card-ruta"
+          >
+            <div class="card-header">
+              <span class="ruta-badge">Ruta</span>
               <div class="codigo-wrapper">
                 <span class="codigo-ruta">{{ ruta.codigo }}</span>
               </div>
-              <div class="info-ruta">
-                <h3 class="nombre-ruta">{{ ruta.nombre }}</h3>
-                <div class="linea-ruta"></div>
-              </div>
             </div>
-            <div class="card-action">
-              <router-link :to="`/rutas/${ruta.slug}`" class="ver-mapa">
+            <div class="card-body">
+              <h3 class="nombre-ruta">{{ ruta.nombre }}</h3>
+              <div class="linea-ruta"></div>
+            </div>
+            <div class="card-footer">
+              <span class="ver-recorrido">
                 Ver recorrido
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
                 </svg>
-              </router-link>
+              </span>
             </div>
-          </div>
+          </router-link>
         </div>
 
         <!-- Estado Vacío -->
@@ -344,114 +349,128 @@ onMounted(async () => {
 /* Grid */
 .grid-rutas {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 2.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
 }
 
 .card-ruta {
   background: white;
-  border-radius: 24px;
+  border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.04);
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   display: flex;
   flex-direction: column;
   position: relative;
-  border: 1px solid #f0f0f0;
+  border: 1px solid #e8e8e8;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .card-ruta:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 25px 50px rgba(0,0,0,0.1);
-  border-color: rgba(76, 194, 83, 0.3);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(76, 194, 83, 0.18);
+  border-color: #4cc253;
+}
+
+.card-header {
+  padding: 1.75rem 1.75rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .ruta-badge {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  background: #f0fdf4;
-  color: #4cc253;
-  font-size: 0.75rem;
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+  color: #2e7d32;
+  font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  padding: 0.4rem 0.8rem;
+  letter-spacing: 1.5px;
+  padding: 0.4rem 0.9rem;
   border-radius: 50px;
-}
-
-.card-content {
-  padding: 2.5rem 2rem 1.5rem 2rem;
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+  order: 2;
 }
 
 .codigo-wrapper {
-  margin-bottom: 1.5rem;
+  order: 1;
 }
 
 .codigo-ruta {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   font-weight: 800;
   color: #1a1a1a;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.02em;
   line-height: 1;
-  background: linear-gradient(135deg, #1a1a1a 0%, #444 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  transition: color 0.3s ease;
 }
 
-.info-ruta {
-  width: 100%;
+.card-ruta:hover .codigo-ruta {
+  color: #4cc253;
+}
+
+.card-body {
+  padding: 0.5rem 1.75rem 1.5rem;
+  flex: 1;
 }
 
 .nombre-ruta {
-  font-size: 1.15rem;
-  font-weight: 600;
+  font-size: 1.05rem;
+  font-weight: 500;
   line-height: 1.5;
   color: #555;
   margin: 0 0 1rem 0;
+  transition: color 0.3s ease;
+}
+
+.card-ruta:hover .nombre-ruta {
+  color: #333;
 }
 
 .linea-ruta {
-  width: 40px;
-  height: 4px;
-  background: #4cc253;
-  margin: 0 auto;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, #4cc253 0%, #81c784 100%);
   border-radius: 2px;
-  opacity: 0.5;
+  transition: width 0.3s ease;
 }
 
-.card-action {
-  padding: 1.5rem;
-  background: #f9fafb;
-  border-top: 1px solid #f0f0f0;
-  display: flex;
-  justify-content: center;
-  transition: background 0.3s ease;
+.card-ruta:hover .linea-ruta {
+  width: 80px;
 }
 
-.card-ruta:hover .card-action {
-  background: #4cc253;
+.card-footer {
+  padding: 1.25rem 1.75rem;
+  background: linear-gradient(180deg, #fafafa 0%, #f5f5f5 100%);
+  border-top: 1px solid #eee;
+  transition: all 0.3s ease;
 }
 
-.ver-mapa {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #6b7280;
+.card-ruta:hover .card-footer {
+  background: linear-gradient(135deg, #4cc253 0%, #43a047 100%);
+  border-top-color: transparent;
+}
+
+.ver-recorrido {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #666;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  transition: color 0.3s ease;
-  text-decoration: none; /* Eliminar subrayado */
+  gap: 0.6rem;
+  transition: all 0.3s ease;
 }
 
-.card-ruta:hover .ver-mapa {
+.ver-recorrido svg {
+  transition: transform 0.3s ease;
+}
+
+.card-ruta:hover .ver-recorrido {
   color: white;
+}
+
+.card-ruta:hover .ver-recorrido svg {
+  transform: translateX(4px);
 }
 
 /* Estado Vacío */
@@ -476,7 +495,11 @@ onMounted(async () => {
   
   .grid-rutas {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
+  }
+
+  .card-ruta:hover {
+    transform: translateY(-4px);
   }
 }
 </style>

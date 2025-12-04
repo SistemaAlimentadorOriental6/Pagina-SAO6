@@ -1,17 +1,6 @@
 <template>
   <div class="controles-accesibilidad">
     <div class="barra-controles">
-      <!-- Botón de información -->
-      <button 
-        @click="mostrarInfo = !mostrarInfo" 
-        class="control-btn info-btn"
-        :class="{ 'activo': mostrarInfo }"
-        aria-label="Información de accesibilidad"
-        title="Información"
-      >
-        <span class="texto-icono">?</span>
-      </button>
-
       <!-- Aumentar tamaño de texto -->
       <button 
         @click="aumentarTexto" 
@@ -34,63 +23,48 @@
         <span class="texto-icono">-A</span>
       </button>
 
-      <!-- Escala de grises -->
-      <button 
-        @click="toggleGrises" 
-        class="control-btn"
-        :class="{ 'activo': escalaGrises }"
-        aria-label="Alternar escala de grises"
-        title="Modo gris"
+      <!-- Botón de YouTube -->
+      <a 
+        href="https://www.youtube.com/@Sao6." 
+        target="_blank"
+        rel="noopener noreferrer"
+        class="control-btn youtube-btn"
+        aria-label="Visitar nuestro canal de YouTube"
+        title="YouTube"
       >
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <circle cx="12" cy="12" r="10"></circle>
-          <path d="M12 2a10 10 0 0 1 0 20z" fill="currentColor"></path>
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
         </svg>
-      </button>
-    </div>
+      </a>
 
-    <!-- Panel informativo -->
-    <Transition name="slide-info">
-      <div v-if="mostrarInfo" class="panel-info">
-        <div class="info-header">
-          <h4>Herramientas de Accesibilidad</h4>
-          <button @click="mostrarInfo = false" class="cerrar-btn" aria-label="Cerrar">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <line x1="18" y1="6" x2="6" y2="18"></line>
-              <line x1="6" y1="6" x2="18" y2="18"></line>
-            </svg>
-          </button>
-        </div>
-        <div class="info-content">
-          <div class="info-item">
-            <div class="info-icon">+A</div>
-            <div class="info-texto">
-              <strong>Aumentar texto</strong>
-              <p>Incrementa el tamaño de la fuente para facilitar la lectura</p>
-            </div>
-          </div>
-          <div class="info-item">
-            <div class="info-icon">-A</div>
-            <div class="info-texto">
-              <strong>Reducir texto</strong>
-              <p>Disminuye el tamaño de la fuente según tu preferencia</p>
-            </div>
-          </div>
-          <div class="info-item">
-            <div class="info-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M12 2a10 10 0 0 1 0 20z" fill="currentColor"></path>
-              </svg>
-            </div>
-            <div class="info-texto">
-              <strong>Modo gris</strong>
-              <p>Convierte todo el contenido a escala de grises</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </Transition>
+      <!-- Botón de Instagram -->
+      <a 
+        href="https://www.instagram.com/sao6oficial" 
+        target="_blank"
+        rel="noopener noreferrer"
+        class="control-btn instagram-btn"
+        aria-label="Visitar nuestro perfil de Instagram"
+        title="Instagram"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+        </svg>
+      </a>
+
+      <!-- Botón de Facebook -->
+      <a 
+        href="https://www.facebook.com/alimentadoresmetrosao6" 
+        target="_blank"
+        rel="noopener noreferrer"
+        class="control-btn facebook-btn"
+        aria-label="Visitar nuestra página de Facebook"
+        title="Facebook"
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+        </svg>
+      </a>
+    </div>
   </div>
 </template>
 
@@ -98,8 +72,6 @@
 import { ref, onMounted } from 'vue'
 
 const nivelTexto = ref(0)
-const escalaGrises = ref(false)
-const mostrarInfo = ref(false)
 
 // Cargar preferencias guardadas
 onMounted(() => {
@@ -107,8 +79,7 @@ onMounted(() => {
   if (preferencias) {
     const datos = JSON.parse(preferencias)
     nivelTexto.value = datos.nivelTexto || 0
-    escalaGrises.value = datos.escalaGrises || false
-    aplicarPreferencias()
+    aplicarTamañoTexto()
   }
 })
 
@@ -126,35 +97,15 @@ const disminuirTexto = () => {
   }
 }
 
-const toggleGrises = () => {
-  escalaGrises.value = !escalaGrises.value
-  aplicarEscalaGrises()
-}
-
 const aplicarTamañoTexto = () => {
   const porcentaje = 100 + (nivelTexto.value * 10)
   document.documentElement.style.fontSize = `${porcentaje}%`
   guardarPreferencias()
 }
 
-const aplicarEscalaGrises = () => {
-  if (escalaGrises.value) {
-    document.documentElement.classList.add('escala-grises')
-  } else {
-    document.documentElement.classList.remove('escala-grises')
-  }
-  guardarPreferencias()
-}
-
-const aplicarPreferencias = () => {
-  aplicarTamañoTexto()
-  aplicarEscalaGrises()
-}
-
 const guardarPreferencias = () => {
   const preferencias = {
-    nivelTexto: nivelTexto.value,
-    escalaGrises: escalaGrises.value
+    nivelTexto: nivelTexto.value
   }
   localStorage.setItem('preferencias-accesibilidad', JSON.stringify(preferencias))
 }
@@ -176,8 +127,8 @@ const guardarPreferencias = () => {
 }
 
 .control-btn {
-  width: 3.25rem;
-  height: 3.25rem;
+  width: 2.75rem;
+  height: 2.75rem;
   border-radius: 50%;
   background: #4cc253;
   border: none;
@@ -187,6 +138,7 @@ const guardarPreferencias = () => {
   justify-content: center;
   transition: all 0.2s ease;
   box-shadow: 0 2px 8px rgba(76, 194, 83, 0.25);
+  text-decoration: none;
 }
 
 .control-btn svg,
@@ -196,7 +148,7 @@ const guardarPreferencias = () => {
 }
 
 .control-btn .texto-icono {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: -0.3px;
 }
@@ -204,6 +156,7 @@ const guardarPreferencias = () => {
 .control-btn:hover:not(:disabled) {
   background: #45b34a;
   box-shadow: 0 4px 12px rgba(76, 194, 83, 0.35);
+  transform: scale(1.05);
 }
 
 .control-btn:active:not(:disabled) {
@@ -218,6 +171,39 @@ const guardarPreferencias = () => {
 .control-btn:disabled {
   opacity: 0.4;
   cursor: not-allowed;
+}
+
+/* Botón de YouTube */
+.youtube-btn {
+  background: #FF0000;
+  box-shadow: 0 2px 8px rgba(255, 0, 0, 0.3);
+}
+
+.youtube-btn:hover {
+  background: #CC0000 !important;
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.45) !important;
+}
+
+/* Botón de Instagram */
+.instagram-btn {
+  background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+  box-shadow: 0 2px 8px rgba(225, 48, 108, 0.35);
+}
+
+.instagram-btn:hover {
+  background: linear-gradient(45deg, #e08322 0%, #d5572b 25%, #cb1632 50%, #bb1255 75%, #ab0777 100%) !important;
+  box-shadow: 0 4px 12px rgba(225, 48, 108, 0.5) !important;
+}
+
+/* Botón de Facebook */
+.facebook-btn {
+  background: #1877F2;
+  box-shadow: 0 2px 8px rgba(24, 119, 242, 0.35);
+}
+
+.facebook-btn:hover {
+  background: #0d65d9 !important;
+  box-shadow: 0 4px 12px rgba(24, 119, 242, 0.5) !important;
 }
 
 /* Panel informativo */
@@ -335,27 +321,31 @@ const guardarPreferencias = () => {
 /* Responsive */
 @media (max-width: 768px) {
   .controles-accesibilidad {
-    right: 1rem;
+    right: 0.75rem;
+  }
+
+  .barra-controles {
+    gap: 0.5rem;
   }
 
   .control-btn {
-    width: 2.75rem;
-    height: 2.75rem;
+    width: 2.25rem;
+    height: 2.25rem;
   }
 
   .control-btn .texto-icono {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 
   .control-btn svg {
-    width: 18px;
-    height: 18px;
+    width: 14px;
+    height: 14px;
   }
 
   .panel-info {
-    right: 3.75rem;
-    width: 260px;
-    padding: 1rem;
+    right: 3rem;
+    width: 240px;
+    padding: 0.875rem;
   }
 }
 </style>

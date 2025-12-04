@@ -19,6 +19,7 @@ const enlaces = ref<EnlaceNavegacion[]>([
   { texto: 'Nosotros', ruta: '/nosotros', tipo: 'ruta' },
   { texto: 'Noticias y comunicados', ruta: '/noticias', tipo: 'ruta' },
   { texto: 'Nuestras Rutas', ruta: '/rutas', tipo: 'ruta' },
+  { texto: 'Contáctanos', ruta: '/contactanos', tipo: 'ruta' },
   { texto: 'Portal del Colaborador', ruta: 'http://indicador-desempeno.sao6.com.co/', tipo: 'externo' },
   { texto: 'Administremos', ruta: 'https://admon.sao6.com.co/', tipo: 'externo' }
 ])

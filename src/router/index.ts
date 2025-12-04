@@ -41,6 +41,11 @@ const router = createRouter({
             component: () => import('../views/RutasView.vue')
         },
         {
+            path: '/contactanos',
+            name: 'contactanos',
+            component: () => import('../views/ContactanosView.vue')
+        },
+        {
             path: '/rutas/:slug',  // Ahora usa slug amigable para SEO
             name: 'detalle-ruta',
             component: () => import('../views/DetalleRutaView.vue')
