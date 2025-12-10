@@ -57,7 +57,7 @@ onMounted(() => {
           </div>
 
           <p class="texto-principal">
-            Somos una organización líder dedicada al <strong>Transporte Masivo de Pasajeros</strong>, integrando tecnología y sostenibilidad en el <strong>Valle de Aburrá (SITVA)</strong>.
+            Somos una organización líder dedicada al <strong>Transporte Masivo de Pasajeros</strong>, integrando tecnología y sostenibilidad y haciendo parte activa del Sistema Integrado de Transporte del Valle de Aburrá <strong>(SITVA)</strong>.
           </p>
           
           <p class="texto-secundario">

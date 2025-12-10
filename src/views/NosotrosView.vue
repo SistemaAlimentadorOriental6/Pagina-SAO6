@@ -182,7 +182,7 @@ const valores = [
             Más que transporte, somos <span class="resaltado" ref="textoMejora">progreso</span>.
           </h2>
           <p class="texto-bajada">
-            Somos una Organización dedicada al Transporte Masivo de pasajeros en la modalidad de servicio alimentador, vinculada al sistema integrado de transporte del valle de aburrá SITVA, comprometidos con el cumplimiento de los requisitos normativos, con un enfoque de mejoramiento continuo dentro del marco de gestión integral, garantizando la confiabilidad y satisfacción de nuestros usuarios, basados en las buenas prácticas ambientales.
+            Somos una Organización dedicada al Transporte Masivo de pasajeros en la modalidad de servicio alimentador, vinculada al Sistema Integrado de Transporte del Valle de Aburrá SITVA, comprometidos con el cumplimiento de los requisitos normativos, con un enfoque de mejoramiento continuo dentro del marco de gestión integral, garantizando la confiabilidad y satisfacción de nuestros usuarios, basados en las buenas prácticas ambientales.
           </p>
           <div class="firma-container">
             <div class="linea-firma"></div>
