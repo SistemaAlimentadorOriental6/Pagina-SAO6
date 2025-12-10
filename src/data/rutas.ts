@@ -187,7 +187,7 @@ export const RUTAS: Ruta[] = [
         slug: 'villa-de-guadalupe-estacion-hospital',
         color: '#2c5f5d',
         descripcion: 'Ruta C6-015 desde Villa de Guadalupe hasta la Estación Hospital. Servicio esencial para conectar los barrios altos de Manrique con el sistema Metro.',
-        videoUrl: 'https://www.youtube.com/embed/N23YbjD5ssA&t=14s',
+        videoUrl: 'https://www.youtube.com/embed/N23YbjD5ssA?start=14',
         mapaUrl: 'https://www.google.com/maps/d/embed?mid=1tyfNicnx4Khfx9OWfuCE0L3NKf8ZslI&ehbc=2E312F',
         keywords: ['Villa de Guadalupe', 'Estación Hospital', 'Manrique Oriental', 'C6-015', 'Transporte Manrique']
     },
