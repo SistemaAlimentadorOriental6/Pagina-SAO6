@@ -6,6 +6,7 @@ export interface Ruta {
     descripcion?: string
     videoUrl?: string
     mapaUrl?: string
+    mapaImagen?: string
     keywords?: string[] // Palabras clave para SEO
 }
 
@@ -188,7 +189,7 @@ export const RUTAS: Ruta[] = [
         color: '#2c5f5d',
         descripcion: 'Ruta C6-014A desde Villa Hermosa hasta Espacio Prado. Conecta sectores residenciales con puntos culturales y de ocio en Prado.',
         videoUrl: 'https://www.youtube.com/embed/_6bWRunZKq4',
-        mapaUrl: '',
+        mapaImagen: '/rutas/Recorrido-C14A.jpeg',
         keywords: [
             'Villa Hermosa',
             'Espacio Prado',
