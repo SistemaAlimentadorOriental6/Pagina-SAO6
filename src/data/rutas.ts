@@ -182,6 +182,22 @@ export const RUTAS: Ruta[] = [
         keywords: ['La Ladera', 'Parque Biblioteca', 'Estación Prado', 'León de Greiff', 'C6-014', 'Comuna 8']
     },
     {
+        codigo: 'C6-014A',
+        nombre: 'Villa Hermosa - Espacio Prado',
+        slug: 'villa-hermosa-espacio-prado',
+        color: '#2c5f5d',
+        descripcion: 'Ruta C6-014A desde Villa Hermosa hasta Espacio Prado. Conecta sectores residenciales con puntos culturales y de ocio en Prado.',
+        videoUrl: 'https://www.youtube.com/embed/_6bWRunZKq4',
+        mapaUrl: '',
+        keywords: [
+            'Villa Hermosa',
+            'Espacio Prado',
+            'C6-014A',
+            'Transporte Villa Hermosa',
+            'Transporte Prado'
+        ]
+    },
+    {
         codigo: 'C6-015',
         nombre: 'Villa de Guadalupe - Estación Hospital',
         slug: 'villa-de-guadalupe-estacion-hospital',
