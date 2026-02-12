@@ -184,15 +184,15 @@ export const RUTAS: Ruta[] = [
     },
     {
         codigo: 'C6-014A',
-        nombre: 'Villa Hermosa - Espacio Prado',
-        slug: 'villa-hermosa-espacio-prado',
+        nombre: 'Villa Hermosa - Estación Prado',
+        slug: 'villa-hermosa-estacion-prado',
         color: '#2c5f5d',
-        descripcion: 'Ruta C6-014A desde Villa Hermosa hasta Espacio Prado. Conecta sectores residenciales con puntos culturales y de ocio en Prado.',
+        descripcion: 'Ruta C6-014A desde Villa Hermosa hasta la Estación Prado. Conecta sectores residenciales con puntos culturales y de ocio en Prado.',
         videoUrl: 'https://www.youtube.com/embed/_6bWRunZKq4',
         mapaImagen: '/rutas/Recorrido-C14A.jpeg',
         keywords: [
             'Villa Hermosa',
-            'Espacio Prado',
+            'Estación Prado',
             'C6-014A',
             'Transporte Villa Hermosa',
             'Transporte Prado'
