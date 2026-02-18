@@ -189,7 +189,7 @@ export const RUTAS: Ruta[] = [
         color: '#2c5f5d',
         descripcion: 'Ruta C6-014A desde Villa Hermosa hasta la Estación Prado. Conecta sectores residenciales con puntos culturales y de ocio en Prado.',
         videoUrl: 'https://www.youtube.com/embed/_6bWRunZKq4',
-        mapaImagen: '/rutas/Recorrido-C14A.jpeg',
+        mapaUrl: 'https://www.google.com/maps/d/embed?mid=12nX63ohlxQJkygE8bXal5m4-huU1-z0&ehbc=2E312F',
         keywords: [
             'Villa Hermosa',
             'Estación Prado',
