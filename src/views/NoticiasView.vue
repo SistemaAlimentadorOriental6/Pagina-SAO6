@@ -44,6 +44,36 @@ const router = useRouter()
 // Datos de la noticia única
 const noticias = [
   {
+    id: 4,
+    titulo: 'Boletín N°03: Cruce de la Cra 50 (Palacé), con la Calle 40 - Sitio de alto riesgo',
+    resumen: 'Recomendaciones operativas para la circulación en el cruce de la Cra. 50 Palacé con la Calle 40, punto de alto riesgo de accidentalidad.',
+    categoria: 'Boletines',
+    autor: 'Plan Estratégico de Seguridad Vial - P.E.S.V.',
+    imagen: '/images/boletin-03.jpeg',
+    fecha: '11 Mar 2026',
+    ruta: '/noticias/boletin-03-cruce-peligroso-cra50-calle40'
+  },
+  {
+    id: 3,
+    titulo: 'Boletín N°02: Curva peligrosa con riesgo de alta accidentalidad - sector Los Pomos',
+    resumen: 'Recomendaciones operativas ante falta de peralte en la curva de la Cra. 21, vía hacia la cabecera de las rutas C6-004 y C6-004A.',
+    categoria: 'Boletines',
+    autor: 'Plan Estratégico de Seguridad Vial - P.E.S.V.',
+    imagen: '/images/boletin-02.jpg',
+    fecha: '21 Feb 2026',
+    ruta: '/noticias/boletin-02-curva-peligrosa-los-pomos'
+  },
+  {
+    id: 2,
+    titulo: 'Boletín N°01: Punto de atención especial en la Cra. 21, Ruta C6-004 y C6-004A',
+    resumen: 'Recomendaciones especiales al transitar por el sector de la Carrera 21, a la altura del Batallón, debido a postes de energía que sobresalen a la vía.',
+    categoria: 'Boletines',
+    autor: 'Plan Estratégico de Seguridad Vial - P.E.S.V.',
+    imagen: '/images/boletin-01.jpg',
+    fecha: '07 Feb 2026',
+    ruta: '/noticias/boletin-01-prevencion-accidentalidad-cra21'
+  },
+  {
     id: 1,
     titulo: 'Sistema alimentador de buses del oriente de Medellín presentó su primer vehículo eléctrico',
     resumen: 'El sistema alimentador oriental presentó la estrategia de movilidad eléctrica con el primer bus de este tipo, equipado con alta tecnología que ya circula en la ciudad.',
@@ -72,17 +102,23 @@ onMounted(() => {
   }
 
   // News Grid Animation
-  gsap.from('.card-noticia', {
-    scrollTrigger: {
-      trigger: '.grid-noticias',
-      start: 'top 80%',
+  gsap.fromTo('.card-noticia',
+    {
+      y: 50,
+      opacity: 0
     },
-    y: 50,
-    opacity: 0,
-    duration: 0.8,
-    stagger: 0.1,
-    ease: 'power3.out'
-  })
+    {
+      scrollTrigger: {
+        trigger: '.grid-noticias',
+        start: 'top 85%',
+      },
+      y: 0,
+      opacity: 1,
+      duration: 0.8,
+      stagger: 0.15,
+      ease: 'power3.out'
+    }
+  )
 })
 </script>
 
@@ -115,12 +151,12 @@ onMounted(() => {
           <article v-for="noticia in noticias" :key="noticia.id" class="card-noticia">
             <div class="imagen-wrapper">
               <img 
-                :data-src="noticia.imagen" 
+                :src="noticia.imagen" 
                 :alt="noticia.titulo" 
                 class="imagen-noticia" 
-                v-lazy
                 width="400"
                 height="240"
+                loading="lazy"
               />
               <div class="categoria-badge">{{ noticia.categoria }}</div>
             </div>

@@ -39,7 +39,7 @@
 
       <!-- Botón de Instagram -->
       <a 
-        href="https://www.instagram.com/sao6oficial" 
+        href="https://www.instagram.com/alimentadoresmetro_sao6" 
         target="_blank"
         rel="noopener noreferrer"
         class="control-btn instagram-btn"
@@ -53,7 +53,7 @@
 
       <!-- Botón de Facebook -->
       <a 
-        href="https://www.facebook.com/alimentadoresmetrosao6" 
+        href="https://www.facebook.com/sistemaalimentadororiental"
         target="_blank"
         rel="noopener noreferrer"
         class="control-btn facebook-btn"
