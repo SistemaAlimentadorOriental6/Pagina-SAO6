@@ -6,6 +6,7 @@ export interface Ruta {
     descripcion?: string
     videoUrl?: string
     mapaUrl?: string
+    mapaImagen?: string
     keywords?: string[] // Palabras clave para SEO
 }
 
@@ -180,6 +181,22 @@ export const RUTAS: Ruta[] = [
         videoUrl: 'https://www.youtube.com/embed/ISVb3eDOK-0',
         mapaUrl: 'https://www.google.com/maps/d/embed?mid=1EWde3DMd8gS3bb4wisAlqK1YtKRFksM&ehbc=2E312F',
         keywords: ['La Ladera', 'Parque Biblioteca', 'Estación Prado', 'León de Greiff', 'C6-014', 'Comuna 8']
+    },
+    {
+        codigo: 'C6-014A',
+        nombre: 'Villa Hermosa - Estación Prado',
+        slug: 'villa-hermosa-estacion-prado',
+        color: '#2c5f5d',
+        descripcion: 'Ruta C6-014A desde Villa Hermosa hasta la Estación Prado. Conecta sectores residenciales con puntos culturales y de ocio en Prado.',
+        videoUrl: 'https://www.youtube.com/embed/_6bWRunZKq4',
+        mapaUrl: 'https://www.google.com/maps/d/embed?mid=12nX63ohlxQJkygE8bXal5m4-huU1-z0&ehbc=2E312F',
+        keywords: [
+            'Villa Hermosa',
+            'Estación Prado',
+            'C6-014A',
+            'Transporte Villa Hermosa',
+            'Transporte Prado'
+        ]
     },
     {
         codigo: 'C6-015',

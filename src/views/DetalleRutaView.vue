@@ -36,7 +36,8 @@ const infoRuta = computed(() => {
     slug: ruta.slug,
     descripcion: ruta.descripcion || `Ruta ${ruta.codigo} que conecta ${ruta.nombre} en el oriente de Medellín.`,
     videoUrl: ruta.videoUrl || 'https://www.youtube-nocookie.com/embed/k7iYWpaGGRE?rel=0&modestbranding=1',
-    mapaUrl: ruta.mapaUrl || 'https://www.google.com/maps/d/embed?mid=1TFSHz03nCXT8wlqs702rJyP0OPq6TB4&ehbc=2E312F',
+    mapaUrl: ruta.mapaUrl,
+    mapaImagen: ruta.mapaImagen,
     keywords: ruta.keywords
   }
 })
@@ -233,8 +234,15 @@ onMounted(() => {
             id="panel-mapa"
             aria-labelledby="tab-mapa"
           >
+            <img 
+              v-if="infoRuta.mapaImagen"
+              :src="infoRuta.mapaImagen" 
+              alt="Imagen del recorrido de la ruta"
+              class="mapa-imagen"
+            />
             <iframe 
-              :src="infoRuta.mapaUrl" 
+              v-else
+              :src="infoRuta.mapaUrl || 'https://www.google.com/maps/d/embed?mid=1TFSHz03nCXT8wlqs702rJyP0OPq6TB4&ehbc=2E312F'" 
               width="100%" 
               height="600" 
               style="border:0;" 
@@ -430,6 +438,13 @@ onMounted(() => {
   margin: 0 0 1rem 0;
   color: #1a1a1a;
   font-size: 1.5rem;
+}
+
+.mapa-imagen {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: #f0f0f0;
 }
 
 .info-adicional p {
