@@ -60,6 +60,16 @@ const router = createRouter({
                 keywords: 'boletin, prevencion, accidentalidad, SAO6, seguridad vial, cruce peligroso, carrera 50, calle 40, palace, medellin'
             }
         },
+        {
+            path: '/noticias/boletin-04-giro-izquierda-intersecciones',
+            name: 'boletin-04',
+            component: () => import('../views/DetalleBoletin04View.vue'),
+            meta: {
+                title: 'Boletín N°04 - Giro a la izquierda en intersecciones | SAO6',
+                description: 'Giro a la izquierda en intersecciones - Factor crítico de accidentalidad. Recomendaciones para fortalecer la conducción preventiva.',
+                keywords: 'boletin, prevencion, accidentalidad, SAO6, seguridad vial, giro a la izquierda, visibilidad, medellin'
+            }
+        },
         // Redirecciones de URLs antiguas para mantener SEO
         {
             path: '/noticias/boletin-01',
@@ -72,6 +82,10 @@ const router = createRouter({
         {
             path: '/noticias/boletin-03',
             redirect: '/noticias/boletin-03-cruce-peligroso-cra50-calle40'
+        },
+        {
+            path: '/noticias/boletin-04',
+            redirect: '/noticias/boletin-04-giro-izquierda-intersecciones'
         },
         // Redirección de la URL antigua para mantener SEO
         {

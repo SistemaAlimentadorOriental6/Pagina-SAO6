@@ -44,6 +44,16 @@ const router = useRouter()
 // Datos de la noticia única
 const noticias = [
   {
+    id: 5,
+    titulo: 'Boletín N°04: Giro a la izquierda en intersecciones - Factor crítico de accidentalidad',
+    resumen: 'Identificación de riesgos asociados al giro a la izquierda y recomendaciones del P.E.S.V. para fortalecer la conducción preventiva.',
+    categoria: 'Boletines',
+    autor: 'Plan Estratégico de Seguridad Vial - P.E.S.V.',
+    imagen: '/images/boletin-04.jpeg',
+    fecha: '31 Mar 2026',
+    ruta: '/noticias/boletin-04-giro-izquierda-intersecciones'
+  },
+  {
     id: 4,
     titulo: 'Boletín N°03: Cruce de la Cra 50 (Palacé), con la Calle 40 - Sitio de alto riesgo',
     resumen: 'Recomendaciones operativas para la circulación en el cruce de la Cra. 50 Palacé con la Calle 40, punto de alto riesgo de accidentalidad.',
