@@ -2,49 +2,49 @@
 import { onMounted, ref } from 'vue'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import heroBgImage from '../assets/images/boletin-04.jpeg'
+import heroBgImage from '../assets/images/boletin-05.jpeg'
 import { useHead } from '@vueuse/head'
 
 // Meta tags optimizados para SEO
 useHead({
-  title: 'Boletín N°04 - Giro a la izquierda en intersecciones | SAO6',
+  title: 'Boletín N°05 - Caída de usuarios en nuestras unidades | SAO6',
   meta: [
     { 
       name: 'description', 
-      content: 'Boletín N°04: Giro a la izquierda en intersecciones - Factor crítico de accidentalidad. Recomendaciones del P.E.S.V. para una conducción segura.' 
+      content: 'Boletín N°05: Caída de usuarios en nuestras unidades. Llamado al cuidado de la integridad de nuestros usuarios y recomendaciones del P.E.S.V. para una conducción segura.' 
     },
     { 
       name: 'keywords', 
-      content: 'boletin, prevencion, accidentalidad, SAO6, seguridad vial, giro a la izquierda, visibilidad, P.E.S.V., medellin' 
+      content: 'boletin, prevencion, accidentalidad, SAO6, seguridad vial, caida de usuarios, usuarios, P.E.S.V., medellin, conduccion segura' 
     },
     { name: 'author', content: 'Plan Estratégico de Seguridad Vial - P.E.S.V.' },
     { name: 'robots', content: 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' },
     
     // Open Graph para redes sociales
     { property: 'og:type', content: 'article' },
-    { property: 'og:title', content: 'Boletín N°04 - Giro a la izquierda en intersecciones | SAO6' },
-    { property: 'og:description', content: 'Giro a la izquierda en intersecciones - Factor crítico de accidentalidad. Recomendaciones para fortalecer la conducción preventiva.' },
-    { property: 'og:image', content: 'https://sao6.com.co/images/boletin-04.jpeg' },
+    { property: 'og:title', content: 'Boletín N°05 - Caída de usuarios en nuestras unidades | SAO6' },
+    { property: 'og:description', content: 'Llamado al cuidado de la integridad de nuestros usuarios. Recomendaciones para fortalecer la conducción segura.' },
+    { property: 'og:image', content: 'https://sao6.com.co/images/boletin-05.jpeg' },
     { property: 'og:image:width', content: '1200' },
     { property: 'og:image:height', content: '630' },
-    { property: 'og:image:alt', content: 'Giro a la izquierda en intersecciones' },
-    { property: 'og:url', content: 'https://sao6.com.co/noticias/boletin-04-giro-izquierda-intersecciones' },
+    { property: 'og:image:alt', content: 'Caída de usuarios en nuestras unidades' },
+    { property: 'og:url', content: 'https://sao6.com.co/noticias/boletin-05-caida-usuarios' },
     { property: 'og:site_name', content: 'SAO6 - Sistema Alimentador Oriental' },
-    { property: 'article:published_time', content: '2026-03-31T08:00:00-05:00' },
-    { property: 'article:modified_time', content: '2026-03-31T08:00:00-05:00' },
+    { property: 'article:published_time', content: '2026-04-29T08:00:00-05:00' },
+    { property: 'article:modified_time', content: '2026-04-29T08:00:00-05:00' },
     { property: 'article:author', content: 'Plan Estratégico de Seguridad Vial - P.E.S.V.' },
     { property: 'article:section', content: 'Seguridad Vial' },
-    { property: 'article:tag', content: 'Boletín, Seguridad Vial, Prevención, Giro a la izquierda' },
+    { property: 'article:tag', content: 'Boletín, Seguridad Vial, Prevención, Caída de usuarios' },
     
     // Twitter Card
     { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:title', content: 'Boletín N°04 - Giro a la izquierda en intersecciones | SAO6' },
-    { name: 'twitter:description', content: 'Giro a la izquierda en intersecciones - Factor crítico de accidentalidad.' },
-    { name: 'twitter:image', content: 'https://sao6.com.co/images/boletin-04.jpeg' },
-    { name: 'twitter:image:alt', content: 'Giro a la izquierda en intersecciones' },
+    { name: 'twitter:title', content: 'Boletín N°05 - Caída de usuarios en nuestras unidades | SAO6' },
+    { name: 'twitter:description', content: 'Llamado al cuidado de la integridad de nuestros usuarios.' },
+    { name: 'twitter:image', content: 'https://sao6.com.co/images/boletin-05.jpeg' },
+    { name: 'twitter:image:alt', content: 'Caída de usuarios en nuestras unidades' },
   ],
   link: [
-    { rel: 'canonical', href: 'https://sao6.com.co/noticias/boletin-04-giro-izquierda-intersecciones' }
+    { rel: 'canonical', href: 'https://sao6.com.co/noticias/boletin-05-caida-usuarios' }
   ],
   script: [
     {
@@ -52,18 +52,18 @@ useHead({
       children: JSON.stringify({
         "@context": "https://schema.org",
         "@type": "NewsArticle",
-        "headline": "Boletín N°04: Giro a la izquierda en intersecciones - Factor crítico de accidentalidad",
-        "alternativeHeadline": "Boletín N°04 - Prevención de Accidentalidad Vial",
-        "description": "Giro a la izquierda en intersecciones - Factor crítico de accidentalidad. Recomendaciones del P.E.S.V. para una conducción segura.",
+        "headline": "Boletín N°05: Caída de usuarios en nuestras unidades",
+        "alternativeHeadline": "Llamado al cuidado de la integridad de nuestros usuarios",
+        "description": "Boletín N°05: Caída de usuarios en nuestras unidades. Recomendaciones del P.E.S.V. para una conducción segura.",
         "image": {
           "@type": "ImageObject",
-          "url": "https://sao6.com.co/images/boletin-04.jpeg",
+          "url": "https://sao6.com.co/images/boletin-05.jpeg",
           "width": 1200,
           "height": 630,
-          "caption": "Giro a la izquierda en intersecciones"
+          "caption": "Caída de usuarios en nuestras unidades"
         },
-        "datePublished": "2026-03-31T08:00:00-05:00",
-        "dateModified": "2026-03-31T08:00:00-05:00",
+        "datePublished": "2026-04-29T08:00:00-05:00",
+        "dateModified": "2026-04-29T08:00:00-05:00",
         "author": {
           "@type": "Organization",
           "name": "Plan Estratégico de Seguridad Vial - P.E.S.V.",
@@ -82,18 +82,18 @@ useHead({
         },
         "mainEntityOfPage": {
           "@type": "WebPage",
-          "@id": "https://sao6.com.co/noticias/boletin-04-giro-izquierda-intersecciones"
+          "@id": "https://sao6.com.co/noticias/boletin-05-caida-usuarios"
         },
         "articleSection": "Seguridad Vial",
-        "keywords": ["boletín", "SAO6", "seguridad vial", "prevención", "giro a la izquierda"],
-        "articleBody": "En nuestra operación se ha identificado un alto nivel de accidentalidad asociado al giro a la izquierda al momento de incorporarnos a una calle o carrera. Durante el año 2025 se presentaron 18 eventos de accidentalidad relacionados con esta maniobra, en los cuales en el 100% de los casos la responsabilidad termina siendo nuestra. Esta maniobra, cuando se realiza de forma inadecuada, genera invasión del carril contrario y pone en riesgo a peatones, motociclistas y otros actores viales. El principal riesgo se origina por la pérdida de visibilidad. Elementos como el espejo, el paral y la estructura del vehículo generan un efecto cortina, ocultando hasta 4 metros de vía y llevando el vehículo a un espacio sin control visual. A esto se suma la práctica insegura de incorporarse en contravía, aumentando la probabilidad de colisiones y atropellamientos.",
+        "keywords": ["boletín", "SAO6", "seguridad vial", "prevención", "caída de usuarios"],
+        "articleBody": "Las difíciles pendientes de las vías por donde transita nuestra operación SAO6, las condiciones del tráfico y la capacidad de arranque de nuestras unidades, especialmente los vehículos RUNNER, exigen de nuestros operadores(as) la máxima precaución durante las paradas e inicios de marcha, de manera que podamos garantizar el cuidado y la integridad de nuestros usuarios. Durante el año 2025 se presentaron 14 eventos relacionados con caída de usuarios al interior de las unidades, situaciones que nos convocan a la reflexión, el aprendizaje y el fortalecimiento de una conducción cada vez más segura.",
         "video": {
           "@type": "VideoObject",
-          "name": "Giro a la izquierda en intersecciones",
-          "description": "Video sobre los riesgos de giro a la izquierda en intersecciones",
-          "thumbnailUrl": "https://img.youtube.com/vi/VN-D5ug_Pkk/maxresdefault.jpg",
-          "uploadDate": "2026-03-31",
-          "embedUrl": "https://www.youtube.com/embed/VN-D5ug_Pkk"
+          "name": "Caída de usuarios en nuestras unidades",
+          "description": "Llamado al cuidado de la integridad de nuestros usuarios",
+          "thumbnailUrl": "https://img.youtube.com/vi/JvT8gAdGMHE/maxresdefault.jpg",
+          "uploadDate": "2026-04-29",
+          "embedUrl": "https://www.youtube.com/embed/JvT8gAdGMHE"
         }
       })
     }
@@ -141,13 +141,13 @@ onMounted(() => {
     <!-- Hero Article -->
     <header class="hero-detalle">
       <div class="hero-detalle-bg-wrapper">
-        <img :src="heroBgImage" alt="Giro a la izquierda en intersecciones" class="hero-detalle-bg" />
+        <img :src="heroBgImage" alt="Caída de usuarios en nuestras unidades" class="hero-detalle-bg" />
         <div class="hero-overlay"></div>
       </div>
       
       <div class="contenedor-estrecho hero-content">
         <div class="categoria-tag">Boletines</div>
-        <h1 ref="tituloRef">Boletín N°04: Giro a la izquierda en intersecciones - Factor crítico de accidentalidad</h1>
+        <h1 ref="tituloRef">Boletín N°05: Caída de usuarios en nuestras unidades</h1>
         
         <div class="meta-info">
           <div class="autor">
@@ -155,7 +155,7 @@ onMounted(() => {
             <span class="nombre">Plan Estratégico de Seguridad Vial - P.E.S.V.</span>
           </div>
           <div class="separador"></div>
-          <div class="fecha">31 Mar 2026</div>
+          <div class="fecha">29 Abr 2026</div>
         </div>
       </div>
     </header>
@@ -165,44 +165,50 @@ onMounted(() => {
       <div class="contenedor-estrecho">
         
         <p class="lead">
-          Giro a la izquierda en intersecciones<br>
-          Factor crítico de accidentalidad
+          Llamado al cuidado de la integridad de nuestros usuarios
         </p>
 
         <div class="cuerpo-texto">
           <p class="espaciado-normal">
-            En nuestra operación se ha identificado un alto nivel de accidentalidad asociado al giro a la izquierda al momento de incorporarnos a una calle o carrera. Durante el año 2025 se presentaron 18 eventos de accidentalidad relacionados con esta maniobra, en los cuales en el 100% de los casos la responsabilidad termina siendo nuestra. Esta maniobra, cuando se realiza de forma inadecuada, genera invasión del carril contrario y pone en riesgo a peatones, motociclistas y otros actores viales.
+            Las difíciles pendientes de las vías por donde transita nuestra operación SAO6, las condiciones del tráfico y la capacidad de arranque de nuestras unidades, especialmente los vehículos RUNNER, exigen de nuestros operadores(as) la máxima precaución durante las paradas e inicios de marcha, de manera que podamos garantizar el cuidado y la integridad de nuestros usuarios.
           </p>
           
           <p class="espaciado-normal">
-            El principal riesgo se origina por la pérdida de visibilidad. Elementos como el espejo, el paral y la estructura del vehículo generan un efecto cortina, ocultando hasta 4 metros de vía y llevando el vehículo a un espacio sin control visual. A esto se suma la práctica insegura de incorporarse en contravía, aumentando la probabilidad de colisiones y atropellamientos.
+            Durante el año 2025 se presentaron 14 eventos relacionados con caída de usuarios al interior de las unidades, situaciones que nos convocan a la reflexión, el aprendizaje y el fortalecimiento de una conducción cada vez más segura.
+          </p>
+
+          <p class="espaciado-normal">
+            El llamado hoy es a aumentar las medidas de precaución durante las paradas, arranques y maniobras operativas.
           </p>
           
           <p class="espaciado-normal">
-            Desde nuestro Plan Estratégico de Seguridad Vial (P.E.S.V.), compartimos las siguientes recomendaciones para fortalecer la conducción preventiva y eliminar este tipo de conductas de riesgo:
+            Desde nuestro Plan Estratégico de Seguridad Vial (P.E.S.V.), compartimos las siguientes recomendaciones para fortalecer la conducción segura y reducir este tipo de riesgos que comprometen la integridad de nuestros usuarios:
           </p>
           
           <ul class="lista-recomendaciones">
-            <li>Realizar PARE total antes de incorporarse.</li>
-            <li>Cabecear y verificar el entorno, eliminando los puntos ciegos.</li>
-            <li>Asegurar visibilidad total antes de iniciar el giro.</li>
-            <li>Incorporarse por el carril derecho, evitando invadir la vía contraria.</li>
+            <li>Evitar aceleraciones y frenadas bruscas.</li>
+            <li>Evitar excesos de velocidad.</li>
+            <li>Aproximarse correctamente al andén para facilitar el ascenso y descenso seguro de los usuarios.</li>
+            <li>Antes de iniciar la marcha, verificar que el usuario haya descendido completamente.</li>
+            <li>Confirmar siempre el cierre de puertas antes de continuar la marcha.</li>
+            <li>Al momento del ascenso, verificar que el usuario se encuentre sentado o correctamente sujetado antes de arrancar.</li>
+            <li>Convertir la conducción progresiva en nuestra principal aliada para una operación segura.</li>
           </ul>
 
           <p class="resaltado">
-            <strong>Recuerda siempre nuestro principio de las 3P: Paro; Pienso; Procedo.</strong>
+            <strong>La seguridad y el cuidado de nuestros usuarios deben ser siempre el centro de cada decisión al volante.</strong>
           </p>
 
           <!-- Video Section -->
-          <div class="video-wrapper">
+          <div class="video-wrapper shorts-wrapper">
             <iframe 
-              src="https://www.youtube-nocookie.com/embed/VN-D5ug_Pkk" 
+              src="https://www.youtube-nocookie.com/embed/JvT8gAdGMHE" 
               title="YouTube video player" 
               frameborder="0" 
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
               allowfullscreen
             ></iframe>
-            <span class="video-caption">Giro a la izquierda en intersecciones - Recomendaciones de seguridad</span>
+            <span class="video-caption">Caída de usuarios en nuestras unidades - Llamado al cuidado de la integridad</span>
           </div>
         </div>
 
@@ -389,12 +395,20 @@ onMounted(() => {
   border-radius: 20px;
   overflow: hidden;
   box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+  background-color: #000;
 }
 
 .video-wrapper iframe {
   width: 100%;
   aspect-ratio: 16/9;
   display: block;
+}
+
+/* Ajuste específico para YouTube Shorts si se requiere proporción vertical */
+.shorts-wrapper iframe {
+  max-width: 400px;
+  aspect-ratio: 9/16;
+  margin: 0 auto;
 }
 
 .video-caption {

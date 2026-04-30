@@ -44,6 +44,16 @@ const router = useRouter()
 // Datos de la noticia única
 const noticias = [
   {
+    id: 6,
+    titulo: 'Boletín N°05: Caída de usuarios en nuestras unidades',
+    resumen: 'Llamado al cuidado de la integridad de nuestros usuarios y recomendaciones del P.E.S.V. para una conducción segura.',
+    categoria: 'Boletines',
+    autor: 'Plan Estratégico de Seguridad Vial - P.E.S.V.',
+    imagen: '/images/boletin-05.jpeg',
+    fecha: '29 Abr 2026',
+    ruta: '/noticias/boletin-05-caida-usuarios'
+  },
+  {
     id: 5,
     titulo: 'Boletín N°04: Giro a la izquierda en intersecciones - Factor crítico de accidentalidad',
     resumen: 'Identificación de riesgos asociados al giro a la izquierda y recomendaciones del P.E.S.V. para fortalecer la conducción preventiva.',

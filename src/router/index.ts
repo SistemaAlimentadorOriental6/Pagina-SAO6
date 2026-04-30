@@ -70,6 +70,16 @@ const router = createRouter({
                 keywords: 'boletin, prevencion, accidentalidad, SAO6, seguridad vial, giro a la izquierda, visibilidad, medellin'
             }
         },
+        {
+            path: '/noticias/boletin-05-caida-usuarios',
+            name: 'boletin-05',
+            component: () => import('../views/DetalleBoletin05View.vue'),
+            meta: {
+                title: 'Boletín N°05 - Caída de usuarios en nuestras unidades | SAO6',
+                description: 'Llamado al cuidado de la integridad de nuestros usuarios. Recomendaciones para fortalecer la conducción segura.',
+                keywords: 'boletin, prevencion, accidentalidad, SAO6, seguridad vial, caida de usuarios, usuarios, medellin'
+            }
+        },
         // Redirecciones de URLs antiguas para mantener SEO
         {
             path: '/noticias/boletin-01',
@@ -86,6 +96,10 @@ const router = createRouter({
         {
             path: '/noticias/boletin-04',
             redirect: '/noticias/boletin-04-giro-izquierda-intersecciones'
+        },
+        {
+            path: '/noticias/boletin-05',
+            redirect: '/noticias/boletin-05-caida-usuarios'
         },
         // Redirección de la URL antigua para mantener SEO
         {
