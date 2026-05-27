@@ -71,6 +71,16 @@ const router = createRouter({
             }
         },
         {
+            path: '/noticias/boletin-06-cuidado-al-reversar',
+            name: 'boletin-06',
+            component: () => import('../views/DetalleBoletin06View.vue'),
+            meta: {
+                title: 'Boletín N°06 - ¡Cuidado al reversar! | SAO6',
+                description: 'Chocar al reversar, una de las principales causas de accidentalidad en SAO6. Recomendaciones para reducir la siniestralidad en maniobras de reversa.',
+                keywords: 'boletin, prevencion, accidentalidad, SAO6, seguridad vial, reversa, maniobras, CMO, SONIA, medellin'
+            }
+        },
+        {
             path: '/noticias/boletin-05-caida-usuarios',
             name: 'boletin-05',
             component: () => import('../views/DetalleBoletin05View.vue'),
@@ -100,6 +110,10 @@ const router = createRouter({
         {
             path: '/noticias/boletin-05',
             redirect: '/noticias/boletin-05-caida-usuarios'
+        },
+        {
+            path: '/noticias/boletin-06',
+            redirect: '/noticias/boletin-06-cuidado-al-reversar'
         },
         // Redirección de la URL antigua para mantener SEO
         {

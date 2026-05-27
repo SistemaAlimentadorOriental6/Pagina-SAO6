@@ -44,6 +44,16 @@ const router = useRouter()
 // Datos de la noticia única
 const noticias = [
   {
+    id: 7,
+    titulo: 'Boletín N°06: ¡Cuidado al reversar!',
+    resumen: 'Chocar al reversar, una de las principales causas de accidentalidad en SAO6. Recomendaciones del P.E.S.V. para reducir la siniestralidad en maniobras de reversa.',
+    categoria: 'Boletines',
+    autor: 'Plan Estratégico de Seguridad Vial - P.E.S.V.',
+    imagen: '/images/boletin-06.jpeg',
+    fecha: '27 May 2026',
+    ruta: '/noticias/boletin-06-cuidado-al-reversar'
+  },
+  {
     id: 6,
     titulo: 'Boletín N°05: Caída de usuarios en nuestras unidades',
     resumen: 'Llamado al cuidado de la integridad de nuestros usuarios y recomendaciones del P.E.S.V. para una conducción segura.',
