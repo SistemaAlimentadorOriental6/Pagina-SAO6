@@ -135,6 +135,11 @@ const router = createRouter({
             name: 'detalle-ruta',
             component: () => import('../views/DetalleRutaView.vue')
         },
+        {
+            path: '/condiciones-de-uso-de-adi',
+            name: 'condiciones-de-uso-de-adi',
+            component: () => import('../views/CondicionesUsoAdiView.vue')
+        },
         // Catch-all para 404 - Redirigir al inicio para evitar páginas rotas
         {
             path: '/:pathMatch(.*)*',
