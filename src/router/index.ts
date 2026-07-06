@@ -81,6 +81,16 @@ const router = createRouter({
             }
         },
         {
+            path: '/noticias/boletin-07-accidentalidad-en-crecimiento',
+            name: 'boletin-07',
+            component: () => import('../views/DetalleBoletin07View.vue'),
+            meta: {
+                title: 'Boletín N°07 - Accidentalidad en crecimiento | SAO6',
+                description: 'La formación es clave para hacernos más conscientes y reducir la accidentalidad vial en la prestación del servicio de SAO6.',
+                keywords: 'boletin, prevencion, accidentalidad, SAO6, seguridad vial, formacion, macrozonas, P.E.S.V., medellin'
+            }
+        },
+        {
             path: '/noticias/boletin-05-caida-usuarios',
             name: 'boletin-05',
             component: () => import('../views/DetalleBoletin05View.vue'),
@@ -114,6 +124,10 @@ const router = createRouter({
         {
             path: '/noticias/boletin-06',
             redirect: '/noticias/boletin-06-cuidado-al-reversar'
+        },
+        {
+            path: '/noticias/boletin-07',
+            redirect: '/noticias/boletin-07-accidentalidad-en-crecimiento'
         },
         // Redirección de la URL antigua para mantener SEO
         {

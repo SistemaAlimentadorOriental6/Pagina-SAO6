@@ -44,6 +44,16 @@ const router = useRouter()
 // Datos de la noticia única
 const noticias = [
   {
+    id: 8,
+    titulo: 'Boletín N°07: Accidentalidad en crecimiento',
+    resumen: 'La formación es clave para hacernos más conscientes y reducir la accidentalidad vial en la prestación del servicio de SAO6. Entrenamiento y reconocimiento en macrozonas.',
+    categoria: 'Boletines',
+    autor: 'Plan Estratégico de Seguridad Vial - P.E.S.V.',
+    imagen: '/images/boletin-07.png',
+    fecha: '03 Jul 2026',
+    ruta: '/noticias/boletin-07-accidentalidad-en-crecimiento'
+  },
+  {
     id: 7,
     titulo: 'Boletín N°06: ¡Cuidado al reversar!',
     resumen: 'Chocar al reversar, una de las principales causas de accidentalidad en SAO6. Recomendaciones del P.E.S.V. para reducir la siniestralidad en maniobras de reversa.',
