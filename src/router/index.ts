@@ -91,6 +91,16 @@ const router = createRouter({
             }
         },
         {
+            path: '/noticias/boletin-08-accidentes-de-transito-externos',
+            name: 'boletin-08',
+            component: () => import('../views/DetalleBoletin08View.vue'),
+            meta: {
+                title: 'Boletín N°08 - Accidentes de tránsito externos | SAO6',
+                description: 'La seguridad vial no termina cuando acaba tu jornada. Recomendaciones del PESV para una movilidad segura en motocicleta y como peatones o ciclistas.',
+                keywords: 'boletin, prevencion, accidentalidad, SAO6, seguridad vial, accidentes externos, motocicletas, PESV, medellin'
+            }
+        },
+        {
             path: '/noticias/boletin-05-caida-usuarios',
             name: 'boletin-05',
             component: () => import('../views/DetalleBoletin05View.vue'),
@@ -128,6 +138,10 @@ const router = createRouter({
         {
             path: '/noticias/boletin-07',
             redirect: '/noticias/boletin-07-accidentalidad-en-crecimiento'
+        },
+        {
+            path: '/noticias/boletin-08',
+            redirect: '/noticias/boletin-08-accidentes-de-transito-externos'
         },
         // Redirección de la URL antigua para mantener SEO
         {

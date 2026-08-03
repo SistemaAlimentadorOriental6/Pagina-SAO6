@@ -44,6 +44,16 @@ const router = useRouter()
 // Datos de la noticia única
 const noticias = [
   {
+    id: 9,
+    titulo: 'Boletín N°08: Accidentes de tránsito externos',
+    resumen: 'La seguridad vial no termina cuando acaba tu jornada. En SAO6 promovemos una conducción segura y responsable. Recomendaciones del PESV para desplazamientos seguros.',
+    categoria: 'Boletines',
+    autor: 'Plan Estratégico de Seguridad Vial - P.E.S.V.',
+    imagen: '/images/boletin-08.jpeg',
+    fecha: '31 Jul 2026',
+    ruta: '/noticias/boletin-08-accidentes-de-transito-externos'
+  },
+  {
     id: 8,
     titulo: 'Boletín N°07: Accidentalidad en crecimiento',
     resumen: 'La formación es clave para hacernos más conscientes y reducir la accidentalidad vial en la prestación del servicio de SAO6. Entrenamiento y reconocimiento en macrozonas.',
