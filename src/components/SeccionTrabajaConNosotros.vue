@@ -215,7 +215,7 @@ onBeforeUnmount(() => {
                   >
                   <span class="checkmark"></span>
                   <span class="texto-politica">
-                    He leído y acepto la <a href="/images/politica-de-tratamiento-y-proteccion-de-datos-personales.pdf" target="_blank" class="link-politica">Política de Tratamiento y Protección de Datos Personales</a> y el tratamiento de mis datos personales para la gestión de esta solicitud de empleo
+                    He leído y acepto la <a href="/pdf/politica-de-tratamiento-y-proteccion-de-datos-personales.pdf" target="_blank" class="link-politica">Política de Tratamiento y Protección de Datos Personales</a> y el tratamiento de mis datos personales para la gestión de esta solicitud de empleo
                   </span>
                 </label>
               </div>

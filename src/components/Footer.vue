@@ -22,7 +22,7 @@
           <h3>Políticas</h3>
           <ul>
             <li><a href="/images/PO-SGI-01-Politica-del-sistema-de-gestion-1.jpg" target="_blank">Política del Sistema de gestión integral</a></li>
-            <li><a href="/images/politica-de-tratamiento-y-proteccion-de-datos-personales.pdf" target="_blank">Política de Tratamiento y Protección de Datos Personales</a></li>
+            <li><a href="/pdf/politica-de-tratamiento-y-proteccion-de-datos-personales.pdf" target="_blank">Política de Tratamiento y Protección de Datos Personales</a></li>
           </ul>
         </div>
 
