@@ -44,6 +44,16 @@ const router = useRouter()
 // Datos de la noticia única
 const noticias = [
   {
+    id: 10,
+    titulo: 'Boletín N° 09: El giro a la izquierda: Un giro que puede cambiarlo todo',
+    resumen: 'Medidas restrictivas ante la recurrencia de esta conducta indebida. Girar a la izquierda en una vía de doble sentido exige atención, anticipación y respetar nuestro carril.',
+    categoria: 'Boletines',
+    autor: 'Plan Estratégico de Seguridad Vial - P.E.S.V.',
+    imagen: '/images/boletin-09.jpeg',
+    fecha: '31 Ago 2026',
+    ruta: '/noticias/boletin-09-el-giro-a-la-izquierda'
+  },
+  {
     id: 9,
     titulo: 'Boletín N°08: Accidentes de tránsito externos',
     resumen: 'La seguridad vial no termina cuando acaba tu jornada. En SAO6 promovemos una conducción segura y responsable. Recomendaciones del PESV para desplazamientos seguros.',

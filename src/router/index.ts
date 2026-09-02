@@ -91,6 +91,16 @@ const router = createRouter({
             }
         },
         {
+            path: '/noticias/boletin-09-el-giro-a-la-izquierda',
+            name: 'boletin-09',
+            component: () => import('../views/DetalleBoletin09View.vue'),
+            meta: {
+                title: 'Boletín N°09 - El giro a la izquierda: Un giro que puede cambiarlo todo | SAO6',
+                description: 'Medidas restrictivas ante la recurrencia de esta conducta indebida. Girar a la izquierda en una vía de doble sentido exige atención y respeto de carril.',
+                keywords: 'boletin, prevencion, accidentalidad, SAO6, seguridad vial, giro a la izquierda, carril contrario, PESV, medellin'
+            }
+        },
+        {
             path: '/noticias/boletin-08-accidentes-de-transito-externos',
             name: 'boletin-08',
             component: () => import('../views/DetalleBoletin08View.vue'),
@@ -142,6 +152,10 @@ const router = createRouter({
         {
             path: '/noticias/boletin-08',
             redirect: '/noticias/boletin-08-accidentes-de-transito-externos'
+        },
+        {
+            path: '/noticias/boletin-09',
+            redirect: '/noticias/boletin-09-el-giro-a-la-izquierda'
         },
         // Redirección de la URL antigua para mantener SEO
         {
