@@ -10,6 +10,8 @@ interface Rail {
   imagen: string
   tipo: 'enlace' | 'modal' | 'none'
   url?: string
+  claseContenedor?: string
+  claseImg?: string
 }
 
 // Control del modal
@@ -39,14 +41,18 @@ const baseRails: Rail[] = [
     url: 'https://www.supertransporte.gov.co/index.php/objetivos-y-funciones/'
   },
   { 
-    nombre: 'Certificación ISO 9001', 
-    imagen: '/rails/image 6.svg',
-    tipo: 'modal'
+    nombre: 'Certificación Trinorma', 
+    imagen: '/rails/Certificado trinorma PNG claro.png',
+    tipo: 'modal',
+    claseContenedor: 'rail-contenedor--certificado',
+    claseImg: 'rail-imagen--certificado'
   },
   { 
-    nombre: 'Certificación ISO 14001', 
-    imagen: '/rails/image 7.svg',
-    tipo: 'modal'
+    nombre: 'Certificación ISO 39001', 
+    imagen: '/rails/Certificado 39001 PNG claro.png',
+    tipo: 'modal',
+    claseContenedor: 'rail-contenedor--certificado',
+    claseImg: 'rail-imagen--certificado'
   },
 ]
 
@@ -133,7 +139,7 @@ const cerrarModal = () => {
             <button 
               type="button"
               class="rail-contenedor" 
-              :class="{ 'clickable': rail.tipo !== 'none' }"
+              :class="[{ 'clickable': rail.tipo !== 'none' }, rail.claseContenedor]"
               @click="manejarClickRail(rail, $event)"
               :title="rail.nombre"
               :aria-label="rail.nombre"
@@ -142,6 +148,7 @@ const cerrarModal = () => {
                 :src="rail.imagen" 
                 :alt="rail.nombre"
                 class="rail-imagen"
+                :class="rail.claseImg"
                 draggable="false"
               />
             </button>
@@ -164,8 +171,8 @@ const cerrarModal = () => {
 
           <div class="modal-header">
             <div class="iso-badges">
-              <img src="/rails/image 6.svg" alt="ISO 9001" class="iso-badge" width="80" height="80" loading="lazy" />
-              <img src="/rails/image 7.svg" alt="ISO 14001" class="iso-badge" width="80" height="80" loading="lazy" />
+              <img src="/rails/Certificado trinorma PNG claro.png" alt="Certificación Trinorma" class="iso-badge" width="80" height="80" loading="lazy" />
+              <img src="/rails/Certificado 39001 PNG claro.png" alt="Certificación ISO 39001" class="iso-badge" width="80" height="80" loading="lazy" />
             </div>
             <h3 class="modal-titulo">Excelencia Certificada</h3>
             <p class="modal-subtitulo">Comprometidos con la calidad y el medio ambiente</p>
@@ -236,6 +243,10 @@ const cerrarModal = () => {
   outline: none;
 }
 
+.rail-contenedor--certificado {
+  width: 190px;
+}
+
 .rail-contenedor.clickable {
   cursor: pointer;
 }
@@ -244,13 +255,25 @@ const cerrarModal = () => {
   max-width: 100%;
   max-height: 65px;
   object-fit: contain;
-  filter: grayscale(100%) opacity(0.6);
+  filter: grayscale(100%) opacity(0.7);
   transition: all 0.3s ease;
+}
+
+.rail-imagen--certificado {
+  max-height: 75px;
+  max-width: 185px;
+  margin-top: 10px;
+  transform: scale(1.18);
 }
 
 .rail-contenedor:hover .rail-imagen {
   filter: grayscale(0%) opacity(1);
   transform: scale(1.1);
+}
+
+.rail-contenedor:hover .rail-imagen--certificado {
+  filter: grayscale(0%) opacity(1);
+  transform: scale(1.3);
 }
 
 .rail-contenedor.clickable:hover {
@@ -343,8 +366,9 @@ const cerrarModal = () => {
 }
 
 .iso-badge {
-  height: 70px;
+  height: 90px;
   width: auto;
+  max-width: 220px;
   object-fit: contain;
   filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05));
   transition: transform 0.3s ease;
