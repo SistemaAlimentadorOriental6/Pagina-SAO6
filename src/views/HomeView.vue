@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import SeccionHero from '../components/SeccionHero.vue'
 import SeccionSocios from '../components/SeccionSocios.vue'
+import SeccionVideo from '../components/SeccionVideo.vue'
 import SeccionRutas from '../components/SeccionRutas.vue'
 import SeccionNoticias from '../components/SeccionNoticias.vue'
 import SeccionNosotros from '../components/SeccionNosotros.vue'
@@ -69,6 +70,7 @@ useHead({
   <main>
     <SeccionHero />
     <SeccionSocios />
+    <SeccionVideo />
     <SeccionNosotros />
     <SeccionNoticias />
     <SeccionRutas />

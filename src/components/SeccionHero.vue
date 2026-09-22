@@ -3,7 +3,7 @@ import { onMounted } from 'vue'
 import { gsap } from 'gsap'
 
 onMounted(() => {
-  // Animación simple y elegante de entrada
+  // Animación de entrada de los elementos del Hero
   const tl = gsap.timeline()
   
   tl.fromTo('.tarjeta-hero', 
@@ -288,7 +288,6 @@ onMounted(() => {
   margin-top: 0.35rem;
 }
 
-
 /* Tablet y pantallas medianas */
 @media (max-width: 1024px) {
   .seccion-hero {
@@ -390,7 +389,6 @@ onMounted(() => {
     height: 16px;
   }
 
-  /* Ocultar descripción en móviles */
   .descripcion-contenedor {
     display: none;
   }
@@ -413,14 +411,9 @@ onMounted(() => {
     background-position: 70% center;
   }
 
-  .contenido-hero {
-    position: static;
-  }
-
   .titulo-principal {
     font-size: 2rem;
     line-height: 1.2;
-    margin-bottom: 0;
   }
 
   .boton-contenedor-mobile {
@@ -446,11 +439,6 @@ onMounted(() => {
   .icono-flecha svg {
     width: 15px;
     height: 15px;
-  }
-
-  /* Descripción oculta en móviles */
-  .descripcion-contenedor {
-    display: none;
   }
 }
 </style>
