@@ -43,8 +43,8 @@ onMounted(() => {
         <div class="imagen-lado">
           <div class="imagen-gradient"></div>
           <img 
-            src="/images/imagenSAO62.jpg" 
-            alt="Transporte SAO"
+            src="/images/OPERADORES.jpg.jpeg" 
+            alt="Operadores SAO"
             loading="eager"
             fetchpriority="high"
           />
@@ -69,7 +69,7 @@ onMounted(() => {
               <img src="/LOGOSAO6.svg" alt="SAO Logo" class="logo-sao" />
             </div>
             <div class="info-empresa">
-              <h3>Sistemas Alimentador Oriental S.A.S</h3>
+              <h3>Sistema Alimentador Oriental S.A.S</h3>
               <span class="subtexto">Innovación en cada kilómetro</span>
             </div>
           </div>

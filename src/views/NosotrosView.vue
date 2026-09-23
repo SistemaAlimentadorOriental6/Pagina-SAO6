@@ -186,7 +186,7 @@ const valores = [
           </p>
           <div class="firma-container">
             <div class="linea-firma"></div>
-            <h3 class="firma">Sistemas Alimentador Oriental S.A.S</h3>
+            <h3 class="firma">Sistema Alimentador Oriental S.A.S</h3>
           </div>
         </div>
       </section>
