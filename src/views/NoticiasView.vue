@@ -44,6 +44,16 @@ const router = useRouter()
 // Datos de la noticia única
 const noticias = [
   {
+    id: 11,
+    titulo: 'Boletín N° 10: Desconéctate del celular. Conéctate con la vía.',
+    resumen: 'Uso indebido del celular en nuestra operación SAO6. En la conducción, unos segundos de distracción pueden ser suficientes para perder de vista un riesgo.',
+    categoria: 'Boletines',
+    autor: 'Plan Estratégico de Seguridad Vial - P.E.S.V.',
+    imagen: '/images/boletin-10.png',
+    fecha: '30 Sep 2026',
+    ruta: '/noticias/boletin-10-desconectate-del-celular'
+  },
+  {
     id: 10,
     titulo: 'Boletín N° 09: El giro a la izquierda: Un giro que puede cambiarlo todo',
     resumen: 'Medidas restrictivas ante la recurrencia de esta conducta indebida. Girar a la izquierda en una vía de doble sentido exige atención, anticipación y respetar nuestro carril.',

@@ -91,6 +91,16 @@ const router = createRouter({
             }
         },
         {
+            path: '/noticias/boletin-10-desconectate-del-celular',
+            name: 'boletin-10',
+            component: () => import('../views/DetalleBoletin10View.vue'),
+            meta: {
+                title: 'Boletín N°10 - Desconéctate del celular. Conéctate con la vía | SAO6',
+                description: 'Boletín N°10: Desconéctate del celular. Conéctate con la vía. Uso indebido del celular en nuestra operación SAO6.',
+                keywords: 'boletin, prevencion, accidentalidad, SAO6, seguridad vial, uso del celular, distraccion, PESV, medellin'
+            }
+        },
+        {
             path: '/noticias/boletin-09-el-giro-a-la-izquierda',
             name: 'boletin-09',
             component: () => import('../views/DetalleBoletin09View.vue'),
@@ -156,6 +166,10 @@ const router = createRouter({
         {
             path: '/noticias/boletin-09',
             redirect: '/noticias/boletin-09-el-giro-a-la-izquierda'
+        },
+        {
+            path: '/noticias/boletin-10',
+            redirect: '/noticias/boletin-10-desconectate-del-celular'
         },
         // Redirección de la URL antigua para mantener SEO
         {
